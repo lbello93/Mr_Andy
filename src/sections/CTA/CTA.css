@@ -1,0 +1,171 @@
+/* ==========================
+   CTA Section
+========================== */
+
+.cta-section {
+  position: relative;
+
+  background: rgba(185, 2, 53, 0.05);
+
+  padding: 128px 0;
+
+  overflow: hidden;
+}
+
+.cta-container {
+  max-width: 1280px;
+
+  margin: auto;
+
+  padding: 0 64px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  gap: 32px;
+}
+
+/* ==========================
+   Heading
+========================== */
+
+.cta-title {
+  max-width: 760px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 72px;
+
+  line-height: 1.1;
+
+  font-weight: 900;
+
+  letter-spacing: -1.5px;
+
+  color: #1c1b1b;
+}
+
+.cta-title span {
+  color: #b90235;
+}
+
+/* ==========================
+   Description
+========================== */
+
+.cta-description {
+  max-width: 670px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 16px;
+
+  line-height: 24px;
+
+  color: #5b4041;
+}
+
+/* ==========================
+   Button
+========================== */
+
+.cta-button {
+  width: 346px;
+
+  height: 76px;
+
+  border: none;
+
+  border-radius: 9999px;
+
+  background: linear-gradient(180deg, #dd2a4b 0%, #b90235 100%);
+
+  color: #fff;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.05em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  transition: 0.35s;
+}
+
+.cta-button:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 30px 35px -5px rgba(185, 2, 53, 0.25);
+}
+
+.cta-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 992px) {
+  .cta-title {
+    font-size: 56px;
+  }
+
+  .cta-button {
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 96px 0;
+  }
+
+  .cta-container {
+    padding: 0 24px;
+  }
+
+  .cta-title {
+    font-size: 42px;
+  }
+
+  .cta-description {
+    font-size: 15px;
+  }
+
+  .cta-button {
+    width: 100%;
+
+    max-width: 320px;
+
+    height: 64px;
+
+    font-size: 16px;
+  }
+}
+
+.cta-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(circle, rgba(185, 2, 53, 0.08), transparent 70%);
+
+  pointer-events: none;
+}

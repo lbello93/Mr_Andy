@@ -1,0 +1,149 @@
+/* ========================= */
+
+.about-cta {
+  position: relative;
+
+  overflow: hidden;
+
+  background: #fcf9f8;
+
+  padding: 128px 24px;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+/* ========================= */
+
+.about-cta-container {
+  max-width: 896px;
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  gap: 32px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+/* ========================= */
+
+.about-cta h2 {
+  font-family: "Playfair Display", serif;
+
+  font-size: 72px;
+
+  font-weight: 900;
+
+  line-height: 1.1;
+
+  letter-spacing: -1.4px;
+
+  color: #1c1b1b;
+}
+
+/* ========================= */
+
+.about-cta p {
+  max-width: 670px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 18px;
+
+  line-height: 1.65;
+
+  color: #5b4041;
+}
+
+/* ========================= */
+/* Decorative Dots */
+/* ========================= */
+
+.dot {
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+/* Pink */
+
+.dot-pink {
+  width: 16px;
+  height: 16px;
+
+  background: #dd2a4b;
+
+  opacity: 0.2;
+
+  top: 80px;
+  left: 10%;
+}
+
+/* Yellow */
+
+.dot-yellow {
+  width: 32px;
+  height: 32px;
+
+  background: #fcd03d;
+
+  opacity: 0.2;
+
+  bottom: 80px;
+  right: 15%;
+}
+
+/* Green */
+
+.dot-green {
+  width: 12px;
+  height: 12px;
+
+  background: #18684d;
+
+  opacity: 0.1;
+
+  top: 50%;
+  left: 25%;
+}
+
+/* ========================= */
+
+.about-cta .btn-primary {
+  margin-top: 12px;
+}
+
+@media (max-width: 992px) {
+  .about-cta h2 {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-cta {
+    padding: 96px 24px;
+  }
+
+  .about-cta h2 {
+    font-size: 42px;
+  }
+
+  .about-cta p {
+    font-size: 16px;
+  }
+
+  .dot-green {
+    display: none;
+  }
+}

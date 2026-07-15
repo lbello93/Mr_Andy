@@ -1,0 +1,173 @@
+/* ==========================
+   PACKAGE CTA
+========================== */
+
+.package-cta {
+  position: relative;
+
+  padding: 128px 24px;
+
+  background: #fcf9f8;
+
+  overflow: hidden;
+}
+
+/* ========================== */
+
+.package-cta-container {
+  max-width: 900px;
+
+  margin: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  gap: 32px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+/* ========================== */
+
+.package-cta h2 {
+  font-family: "Playfair Display", serif;
+
+  font-size: 72px;
+
+  line-height: 1.1;
+
+  font-weight: 900;
+
+  color: #1c1b1b;
+
+  letter-spacing: -1.5px;
+
+  max-width: 760px;
+}
+
+/* ========================== */
+
+.package-cta p {
+  max-width: 640px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 18px;
+
+  line-height: 1.65;
+
+  color: #5b4041;
+}
+
+/* ========================== */
+/* Decorative Circles */
+/* ========================== */
+
+.dot {
+  position: absolute;
+
+  border-radius: 50%;
+
+  z-index: 1;
+}
+
+.dot-one {
+  width: 16px;
+
+  height: 16px;
+
+  top: 80px;
+
+  left: 10%;
+
+  background: #dd2a4b;
+
+  opacity: 0.2;
+}
+
+.dot-two {
+  width: 32px;
+
+  height: 32px;
+
+  right: 15%;
+
+  bottom: 80px;
+
+  background: #fcd03d;
+
+  opacity: 0.2;
+}
+
+.dot-three {
+  width: 12px;
+
+  height: 12px;
+
+  left: 25%;
+
+  top: 52%;
+
+  background: #18684d;
+
+  opacity: 0.1;
+}
+
+/* ========================== */
+
+@media (max-width: 1024px) {
+  .package-cta {
+    padding: 100px 24px;
+  }
+
+  .package-cta h2 {
+    font-size: 56px;
+  }
+}
+
+/* ========================== */
+
+@media (max-width: 768px) {
+  .package-cta {
+    padding: 80px 20px;
+  }
+
+  .package-cta h2 {
+    font-size: 42px;
+  }
+
+  .package-cta p {
+    font-size: 16px;
+  }
+
+  .dot-one {
+    left: 6%;
+  }
+
+  .dot-two {
+    right: 8%;
+  }
+
+  .dot-three {
+    display: none;
+  }
+}
+
+/* ========================== */
+
+@media (max-width: 480px) {
+  .package-cta h2 {
+    font-size: 34px;
+  }
+
+  .package-cta p {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,97 @@
+/* ===========================
+   STEP 5
+=========================== */
+
+.step5-form {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  margin-top: 40px;
+}
+
+/* Label (optional) */
+
+.contact-label {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #1c1b1b;
+
+  margin-bottom: 8px;
+}
+
+/* Input */
+
+.contact-input {
+  width: 100%;
+  height: 75px;
+
+  padding: 24px;
+
+  background: #ffffff;
+
+  border: 2px solid #eae7e7;
+  border-radius: 12px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+
+  color: #1c1b1b;
+
+  outline: none;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0px 20px 20px -5px rgba(185, 2, 53, 0.08);
+}
+
+/* Placeholder */
+
+.contact-input::placeholder {
+  color: #8c7b7c;
+}
+
+/* Hover */
+
+.contact-input:hover {
+  border-color: #dd2a4b;
+}
+
+/* Focus */
+
+.contact-input:focus {
+  border-color: #b90235;
+
+  box-shadow:
+    0px 20px 20px -5px rgba(185, 2, 53, 0.08),
+    0 0 0 4px rgba(185, 2, 53, 0.12);
+}
+
+/* Autofill */
+
+.contact-input:-webkit-autofill,
+.contact-input:-webkit-autofill:hover,
+.contact-input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: #1c1b1b;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .step5-form {
+    gap: 14px;
+  }
+
+  .contact-input {
+    height: 68px;
+    padding: 20px;
+    font-size: 15px;
+  }
+}

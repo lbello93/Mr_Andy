@@ -1,0 +1,184 @@
+.packages-section {
+  padding: 96px 0;
+  background: #fcf9f8;
+}
+
+.packages-container {
+  max-width: 1280px;
+  margin: auto;
+  padding: 0 64px;
+
+  text-align: center;
+}
+
+.packages-container h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  font-weight: 700;
+
+  color: #1c1b1b;
+
+  margin-bottom: 48px;
+}
+
+.packages-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 24px;
+
+  margin-bottom: 48px;
+}
+
+.package-card {
+  position: relative;
+
+  background: #fff;
+
+  border: 1px solid #e4bdbe;
+
+  border-radius: 40px;
+
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition: 0.35s;
+}
+
+.package-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 20px 30px rgba(185, 2, 53, 0.08);
+}
+
+.package-icon {
+  color: #b90235;
+
+  margin-bottom: 24px;
+}
+
+.package-card h3 {
+  font-family: "Playfair Display", serif;
+
+  font-size: 32px;
+
+  margin-bottom: 16px;
+
+  color: #1c1b1b;
+}
+
+.package-card p {
+  color: #5b4041;
+
+  line-height: 1.6;
+
+  margin-bottom: 32px;
+
+  max-width: 260px;
+}
+
+.package-card button {
+  width: 100%;
+
+  height: 56px;
+
+  border-radius: 999px;
+
+  background: white;
+
+  border: 2px solid #b90235;
+
+  color: #b90235;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.1em;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.package-card button:hover {
+  background: #b90235;
+  color: white;
+}
+
+.featured {
+  background: rgba(185, 2, 53, 0.05);
+
+  border: 2px solid #b90235;
+}
+
+.featured button {
+  background: linear-gradient(180deg, #dd2a4b, #b90235);
+
+  color: white;
+
+  border: none;
+
+  box-shadow: 0 4px 12px rgba(185, 2, 53, 0.2);
+}
+
+.package-badge {
+  position: absolute;
+
+  top: -12px;
+
+  background: #b90235;
+
+  color: white;
+
+  padding: 4px 16px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+}
+
+.packages-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  text-decoration: none;
+
+  color: #5b4041;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  font-size: 16px;
+}
+@media (max-width: 992px) {
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .package-card {
+    max-width: 500px;
+
+    margin: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .packages-container {
+    padding: 0 24px;
+  }
+
+  .packages-container h2 {
+    font-size: 38px;
+  }
+}

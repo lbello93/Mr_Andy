@@ -1,0 +1,135 @@
+/* ========================= */
+
+.comparison-table {
+  padding: 96px 0;
+
+  background: #f6f3f2;
+}
+
+/* ========================= */
+
+.comparison-container {
+  max-width: 1152px;
+
+  margin: auto;
+
+  padding: 0 24px;
+}
+
+/* ========================= */
+
+.comparison-container h2 {
+  text-align: center;
+
+  margin-bottom: 64px;
+
+  font-size: 48px;
+
+  font-family: "Playfair Display", serif;
+
+  color: #1c1b1b;
+}
+
+/* ========================= */
+
+.table-wrapper {
+  background: #fff;
+
+  border-radius: 32px;
+
+  overflow: hidden;
+
+  box-shadow: 0 20px 25px rgba(185, 2, 53, 0.08);
+}
+
+/* ========================= */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+/* ========================= */
+
+thead {
+  background: rgba(185, 2, 53, 0.05);
+}
+
+th {
+  padding: 24px;
+
+  font-size: 14px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.06em;
+
+  font-weight: 700;
+
+  color: #1c1b1b;
+
+  text-align: center;
+}
+
+th:first-child {
+  color: #b90235;
+
+  text-align: left;
+}
+
+.highlight {
+  color: #b90235;
+}
+
+/* ========================= */
+
+tbody tr {
+  border-bottom: 1px solid rgba(228, 189, 190, 0.25);
+}
+
+tbody tr:last-child {
+  border: none;
+}
+
+td {
+  padding: 24px;
+
+  font-size: 16px;
+
+  color: #5b4041;
+
+  text-align: center;
+
+  vertical-align: middle;
+}
+
+.feature {
+  font-weight: 700;
+
+  color: #1c1b1b;
+
+  text-align: left;
+}
+
+td svg {
+  color: #b90235;
+}
+
+.accent {
+  color: #b90235;
+
+  font-weight: 600;
+}
+
+/* ========================= */
+
+@media (max-width: 900px) {
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 760px;
+  }
+}

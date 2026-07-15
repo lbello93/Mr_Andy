@@ -1,0 +1,187 @@
+.exist-section {
+  padding: 96px 0;
+
+  background: #fcf9f8;
+}
+
+.exist-container {
+  max-width: 1280px;
+
+  margin: auto;
+
+  padding: 0 64px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 64px;
+
+  align-items: center;
+}
+
+/* LEFT */
+
+.exist-image-wrapper {
+  position: relative;
+}
+
+.exist-image {
+  width: 100%;
+
+  height: 680px;
+
+  object-fit: cover;
+
+  border-radius: 32px;
+
+  box-shadow: 0 20px 25px -5px rgba(185, 2, 53, 0.08);
+}
+
+.quote-card {
+  position: absolute;
+
+  right: -32px;
+
+  bottom: -32px;
+
+  width: 270px;
+
+  background: #eb436d;
+
+  color: white;
+
+  border-radius: 24px;
+
+  padding: 32px;
+
+  box-shadow: 0 20px 25px -5px rgba(185, 2, 53, 0.15);
+}
+
+.quote-card p {
+  font-size: 16px;
+
+  line-height: 1.5;
+
+  font-style: italic;
+
+  margin-bottom: 16px;
+}
+
+.quote-card span {
+  font-size: 15px;
+}
+
+/* RIGHT */
+
+.exist-content h2 {
+  font-family: "Playfair Display", serif;
+
+  font-size: 48px;
+
+  margin-bottom: 28px;
+}
+
+.exist-content p {
+  font-size: 18px;
+
+  line-height: 1.65;
+
+  color: #5b4041;
+
+  margin-bottom: 24px;
+}
+
+.exist-content strong {
+  color: #b90235;
+}
+
+.exist-features {
+  margin-top: 40px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+/* Feature */
+
+.feature-item {
+  display: flex;
+
+  gap: 16px;
+}
+
+.feature-icon {
+  width: 48px;
+
+  height: 48px;
+
+  border-radius: 999px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.feature-item h4 {
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.05em;
+
+  margin-bottom: 6px;
+}
+
+.feature-item p {
+  margin: 0;
+
+  font-size: 16px;
+
+  line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+  .exist-container {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-card {
+    right: 16px;
+
+    bottom: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .exist-container {
+    padding: 0 24px;
+  }
+
+  .exist-content h2 {
+    font-size: 38px;
+  }
+
+  .exist-image {
+    height: 500px;
+  }
+
+  .quote-card {
+    position: relative;
+
+    right: auto;
+
+    bottom: auto;
+
+    width: 100%;
+
+    margin-top: 24px;
+  }
+}

@@ -1,0 +1,43 @@
+.option-card {
+  width: 100%;
+  height: 120px;
+
+  border: 2px solid #eae7e7;
+  border-radius: 16px;
+
+  background: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 14px;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 15px 20px rgba(185, 2, 53, 0.05);
+}
+
+.option-card:hover {
+  border-color: #eb436d;
+  transform: translateY(-2px);
+}
+
+.option-card.active {
+  background: #fff5f7;
+  border: 2px solid #eb436d;
+
+  box-shadow: 0 15px 30px rgba(185, 2, 53, 0.15);
+}
+
+.option-card.active .option-icon {
+  color: #b90235;
+}
+
+.option-card.active span {
+  color: #b90235;
+  font-weight: 700;
+}

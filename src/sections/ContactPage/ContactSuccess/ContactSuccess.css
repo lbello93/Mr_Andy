@@ -1,0 +1,264 @@
+/* ===========================
+   CONTACT SUCCESS PAGE
+=========================== */
+
+.contact-success {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 180px 64px;
+
+  overflow: hidden;
+
+  background: #fcf9f8;
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.success-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 672px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  z-index: 2;
+}
+
+/* ===========================
+   ICON
+=========================== */
+
+.success-icon-wrapper {
+  width: 256px;
+  height: 256px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #ffffff;
+
+  border-radius: 50%;
+
+  color: #b90235;
+
+  box-shadow: 0 20px 40px rgba(185, 2, 53, 0.15);
+
+  margin-bottom: 48px;
+
+  position: relative;
+}
+
+.success-icon-wrapper::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  pointer-events: none;
+}
+
+/* ===========================
+   TEXT
+=========================== */
+
+.success-content h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 72px;
+  line-height: 79px;
+  font-weight: 900;
+
+  letter-spacing: -1.4px;
+
+  color: #1c1b1b;
+
+  margin-bottom: 24px;
+}
+
+.success-content p {
+  max-width: 512px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 18px;
+  line-height: 29px;
+
+  color: #5b4041;
+
+  margin: 0 auto;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.success-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 16px;
+
+  margin-top: 56px;
+
+  flex-wrap: wrap;
+}
+
+.secondary-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  height: 56px;
+
+  padding: 0 40px;
+
+  border: 2px solid #b90235;
+  border-radius: 999px;
+
+  background: transparent;
+
+  font-family: "Plus Jakarta Sans";
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 0.7px;
+
+  color: #b90235;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.secondary-btn:hover {
+  background: #fff3f6;
+}
+
+/* ===========================
+   BACKGROUND GLOWS
+=========================== */
+
+.success-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(60px);
+
+  pointer-events: none;
+}
+
+.success-glow-left {
+  width: 320px;
+  height: 320px;
+
+  left: -80px;
+  bottom: -80px;
+
+  background: rgba(221, 42, 75, 0.1);
+}
+
+.success-glow-right {
+  width: 320px;
+  height: 320px;
+
+  right: -80px;
+  top: -80px;
+
+  background: rgba(252, 208, 61, 0.1);
+}
+
+/* Center glow */
+
+.contact-success::before {
+  content: "";
+
+  position: absolute;
+
+  width: 800px;
+  height: 800px;
+
+  border-radius: 50%;
+
+  background: rgba(185, 2, 53, 0.05);
+
+  filter: blur(60px);
+
+  z-index: 0;
+}
+
+/* Decorative blobs */
+
+.contact-success::after {
+  content: "";
+
+  position: absolute;
+
+  width: 96px;
+  height: 96px;
+
+  left: 40px;
+  top: 25%;
+
+  background: rgba(252, 208, 61, 0.2);
+
+  border-radius: 50%;
+
+  filter: blur(32px);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 768px) {
+  .contact-success {
+    padding: 120px 24px;
+  }
+
+  .success-icon-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+
+  .success-content h1 {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  .success-content p {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  .success-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .success-actions button {
+    width: 100%;
+  }
+}

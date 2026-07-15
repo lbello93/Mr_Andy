@@ -1,0 +1,105 @@
+/* ====================== */
+
+.promise-section {
+  background: #eb436d;
+
+  padding: 96px 0;
+}
+
+/* ====================== */
+
+.promise-container {
+  max-width: 768px;
+
+  margin: auto;
+
+  padding: 0 24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  gap: 31px;
+}
+
+/* ====================== */
+
+.promise-icon {
+  color: white;
+}
+
+/* ====================== */
+
+.promise-section h2 {
+  font-family: "Playfair Display", serif;
+
+  font-size: 48px;
+
+  font-weight: 700;
+
+  color: white;
+}
+
+/* ====================== */
+
+.promise-section blockquote {
+  font-family: "Playfair Display", serif;
+
+  font-size: 36px;
+
+  line-height: 1.15;
+
+  font-style: italic;
+
+  color: white;
+
+  max-width: 730px;
+}
+
+/* ====================== */
+
+.promise-divider {
+  width: 64px;
+
+  height: 2px;
+
+  background: rgba(255, 255, 255, 0.3);
+
+  border-radius: 999px;
+}
+
+/* ====================== */
+
+.promise-author {
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .promise-section {
+    padding: 80px 24px;
+  }
+
+  .promise-section h2 {
+    font-size: 36px;
+  }
+
+  .promise-section blockquote {
+    font-size: 28px;
+
+    line-height: 1.3;
+  }
+}

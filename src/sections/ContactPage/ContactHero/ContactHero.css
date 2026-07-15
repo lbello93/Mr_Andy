@@ -1,0 +1,201 @@
+/* ==========================================
+   CONTACT HERO
+========================================== */
+
+.contact-hero {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  min-height: calc(100vh - 96px);
+
+  padding: 80px 0 100px;
+}
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.contact-wrapper {
+  width: 1280px;
+  max-width: calc(100% - 128px);
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 430px 1fr;
+
+  align-items: center;
+  gap: 80px;
+}
+
+/* ==========================================
+   LEFT PANEL
+========================================== */
+
+.contact-left {
+  display: flex;
+  flex-direction: column;
+
+  gap: 40px;
+}
+
+/* ==========================================
+   STEP CONTENT
+========================================== */
+
+.contact-step-content {
+  min-height: 360px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================
+   BUTTON AREA
+========================================== */
+
+.contact-navigation {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  margin-top: 20px;
+}
+
+.contact-navigation .primary-btn {
+  flex: 1;
+}
+
+/* ==========================================
+   BACK BUTTON
+========================================== */
+
+.contact-back-btn {
+  height: 56px;
+
+  padding: 0 28px;
+
+  border: 2px solid #b90235;
+  border-radius: 999px;
+
+  background: white;
+
+  color: #b90235;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.contact-back-btn:hover {
+  background: #b90235;
+  color: white;
+}
+
+/* ==========================================
+   RIGHT PANEL
+========================================== */
+
+.contact-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-image {
+  width: 100%;
+  max-width: 760px;
+
+  display: block;
+
+  object-fit: contain;
+}
+
+/* ==========================================
+   STEP TITLE
+========================================== */
+
+.step h3 {
+  margin-bottom: 36px;
+
+  font-family: "Playfair Display", serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  color: #1c1b1b;
+}
+
+/* ==========================================
+   OPTION GRID
+========================================== */
+
+.option-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 16px;
+}
+
+.option-grid .option-card:last-child {
+  grid-column: span 1;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 1200px) {
+  .contact-wrapper {
+    max-width: calc(100% - 80px);
+
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+  }
+
+  .contact-right {
+    order: -1;
+  }
+
+  .contact-image {
+    max-width: 520px;
+  }
+
+  .contact-step-content {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero {
+    padding: 60px 0;
+  }
+
+  .contact-wrapper {
+    max-width: calc(100% - 40px);
+  }
+
+  .step h3 {
+    font-size: 34px;
+  }
+
+  .option-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-navigation {
+    flex-direction: column;
+  }
+
+  .contact-back-btn,
+  .contact-navigation .primary-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,84 @@
+.step3-form {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.date-label {
+  display: block;
+  margin-bottom: 12px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #1c1b1b;
+}
+
+.date-field {
+  position: relative;
+
+  width: 100%;
+}
+
+.date-field input {
+  width: 100%;
+  height: 72px;
+
+  padding: 0 24px 0 60px;
+
+  border: 2px solid #eae7e7;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+
+  color: #1c1b1b;
+
+  outline: none;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 20px 20px -5px rgba(185, 2, 53, 0.08);
+
+  cursor: pointer;
+}
+
+.date-field input:hover {
+  border-color: #eb436d;
+}
+
+.date-field input:focus {
+  border-color: #eb436d;
+
+  box-shadow: 0 0 0 4px rgba(235, 67, 109, 0.12);
+}
+
+.calendar-icon {
+  position: absolute;
+
+  left: 22px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #b90235;
+
+  pointer-events: none;
+}
+
+/* Hide browser icon but keep calendar functionality */
+
+.date-field input::-webkit-calendar-picker-indicator {
+  position: absolute;
+
+  right: 20px;
+
+  width: 24px;
+  height: 24px;
+
+  opacity: 0;
+
+  cursor: pointer;
+}
