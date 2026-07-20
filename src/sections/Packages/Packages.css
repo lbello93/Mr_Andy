@@ -25,10 +25,11 @@
   display: grid;
 
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: min-content;
 
   gap: 24px;
 
-  margin-bottom: 48px;
+  margin-bottom: 16px;
 }
 
 .package-card {
@@ -40,11 +41,12 @@
 
   border-radius: 40px;
 
-  padding: 40px;
+  padding: 28px 32px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: stretch;
 
   transition: 0.35s;
 }
@@ -58,7 +60,7 @@
 .package-icon {
   color: #b90235;
 
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .package-card h3 {
@@ -66,7 +68,7 @@
 
   font-size: 32px;
 
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 
   color: #1c1b1b;
 }
@@ -76,7 +78,7 @@
 
   line-height: 1.6;
 
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 
   max-width: 260px;
 }
