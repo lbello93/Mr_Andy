@@ -114,6 +114,10 @@ td {
 
 td svg {
   color: #b90235;
+
+  display: inline-block;
+
+  vertical-align: middle;
 }
 
 .accent {
