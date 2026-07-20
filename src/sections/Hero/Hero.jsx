@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Container from "../../components/Container";
 
 const Hero = () => {
@@ -35,9 +36,12 @@ const Hero = () => {
 
             {/* CTA */}
 
-            <button className="mt-10 rounded-full bg-gradient-to-b from-[#DD2A4B] to-[#B90235] px-8 py-4 text-white shadow-lg">
+            <Link
+              to="/contact"
+              className="inline-block mt-10 rounded-full bg-gradient-to-b from-[#DD2A4B] to-[#B90235] px-8 py-4 text-white shadow-lg"
+            >
               Design Your Experience →
-            </button>
+            </Link>
           </div>
 
           {/* RIGHT */}
