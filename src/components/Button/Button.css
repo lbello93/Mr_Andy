@@ -28,3 +28,16 @@
 
   cursor: not-allowed;
 }
+
+.button-secondary {
+  background: transparent;
+  color: #b90235;
+
+  border: 2px solid #b90235;
+}
+
+.button-secondary:hover {
+  background: rgba(185, 2, 53, 0.06);
+
+  transform: translateY(-2px);
+}
