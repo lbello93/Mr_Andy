@@ -1,5 +1,5 @@
 import "./WhyWeExist.css";
-import image from "../../../public/gallery/gallery3.png";
+const image = "/gallery/gallery3.png";
 import { features } from "./whyData";
 import FeatureItem from "./FeatureItem";
 

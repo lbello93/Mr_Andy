@@ -1,9 +1,9 @@
 import "./Gallery.css";
 import { ArrowUpRight } from "lucide-react";
 
-import gallery1 from "/gallery/gallery1.png";
-import gallery2 from "/gallery/gallery2.png";
-import gallery3 from "/gallery/gallery3.png";
+const gallery1 = "/gallery/gallery1.png";
+const gallery2 = "/gallery/gallery2.png";
+const gallery3 = "/gallery/gallery3.png";
 
 export default function Gallery() {
   return (
