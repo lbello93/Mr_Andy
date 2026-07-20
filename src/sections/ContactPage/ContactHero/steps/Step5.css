@@ -95,3 +95,32 @@
     font-size: 15px;
   }
 }
+
+/* ===========================
+   Field wrapper
+=========================== */
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Error border */
+
+.contact-input--error {
+  border-color: #b90235 !important;
+  box-shadow:
+    0px 20px 20px -5px rgba(185, 2, 53, 0.08),
+    0 0 0 4px rgba(185, 2, 53, 0.12) !important;
+}
+
+/* Inline error message */
+
+.field-error {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #b90235;
+  padding-left: 4px;
+}

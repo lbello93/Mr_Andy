@@ -44,7 +44,9 @@ export default function ContactHero() {
     if (step === 4 && !data.vision.trim()) return;
 
     if (step === 5) {
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!data.name || !data.email || !data.phone) return;
+      if (!EMAIL_RE.test(data.email.trim())) return;
 
       console.log("Form Submitted:", data);
 
