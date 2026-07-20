@@ -8,7 +8,7 @@ const guestOptions = [
   "More than 100 Guests",
 ];
 
-export default function Step2({ formData, setFormData }) {
+export default function Step2({ formData, setFormData, onSelect }) {
   return (
     <>
       <div className="step-header">
@@ -21,12 +21,13 @@ export default function Step2({ formData, setFormData }) {
             key={option}
             title={option}
             active={formData.guests === option}
-            onClick={() =>
+            onClick={() => {
               setFormData((prev) => ({
                 ...prev,
                 guests: option,
-              }))
-            }
+              }));
+              onSelect({ guests: option });
+            }}
           />
         ))}
       </div>
