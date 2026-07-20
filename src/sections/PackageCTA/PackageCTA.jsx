@@ -21,7 +21,7 @@ export default function PackageCTA() {
           design team to start brainstorming your custom candy installation.
         </p>
 
-        <Button>Plan Your Celebration</Button>
+        <Button to="/contact">Plan Your Celebration</Button>
       </div>
     </section>
   );

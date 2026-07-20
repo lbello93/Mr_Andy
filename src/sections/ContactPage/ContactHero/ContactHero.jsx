@@ -24,22 +24,31 @@ export default function ContactHero() {
     phone: "",
   });
 
-  const nextStep = () => {
+  // overrides lets selection handlers pass a freshly-selected value
+  // synchronously so validation sees it — avoids the stale-closure problem
+  // when calling nextStep() right after setFormData().
+  // The Next button calls nextStep() with no arguments; behaviour is unchanged.
+  const nextStep = (overrides = {}) => {
+    const data = { ...formData, ...overrides };
+
     if (step === 1) {
-      if (!formData.occasion) return;
+      if (!data.occasion) return;
     }
 
     if (step === 2) {
-      if (!formData.guests) return;
+      if (!data.guests) return;
     }
-    if (step === 3 && !formData.date) return;
 
-    if (step === 4 && !formData.vision.trim()) return;
+    if (step === 3 && !data.date) return;
+
+    if (step === 4 && !data.vision.trim()) return;
 
     if (step === 5) {
-      if (!formData.name || !formData.email || !formData.phone) return;
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!data.name || !data.email || !data.phone) return;
+      if (!EMAIL_RE.test(data.email.trim())) return;
 
-      console.log("Form Submitted:", formData);
+      console.log("Form Submitted:", data);
 
       // TODO: Send to backend here
 
@@ -100,6 +109,7 @@ export default function ContactHero() {
                         ...prev,
                         occasion: item.title,
                       }));
+                      nextStep({ occasion: item.title });
                     }}
                   />
                 ))}
@@ -109,10 +119,10 @@ export default function ContactHero() {
 
           {/* STEP 2 */}
           {step === 2 && (
-            <Step2 formData={formData} setFormData={setFormData} />
+            <Step2 formData={formData} setFormData={setFormData} onSelect={nextStep} />
           )}
           {step === 3 && (
-            <Step3 formData={formData} setFormData={setFormData} />
+            <Step3 formData={formData} setFormData={setFormData} onSelect={nextStep} />
           )}
           {step === 4 && (
             <Step4 formData={formData} setFormData={setFormData} />

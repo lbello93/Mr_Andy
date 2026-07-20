@@ -1,4 +1,8 @@
 .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   width: 100%;
   height: 64px;
 
@@ -27,4 +31,17 @@
   color: #888;
 
   cursor: not-allowed;
+}
+
+.button-secondary {
+  background: transparent;
+  color: #b90235;
+
+  border: 2px solid #b90235;
+}
+
+.button-secondary:hover {
+  background: rgba(185, 2, 53, 0.06);
+
+  transform: translateY(-2px);
 }

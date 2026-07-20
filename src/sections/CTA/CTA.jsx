@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./CTA.css";
 
 export default function CTA() {
@@ -13,7 +14,9 @@ export default function CTA() {
           to lock in your preferred date.
         </p>
 
-        <button className="cta-button">Plan Your Celebration</button>
+        <Link to="/contact" className="cta-button">
+          Plan Your Celebration
+        </Link>
       </div>
     </section>
   );
