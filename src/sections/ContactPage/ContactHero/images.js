@@ -50,6 +50,6 @@ export const stepImages = {
   1: step1,
   2: step2Images,
   3: step34Images,
-  4: step34Images, // Same object reused
+  4: step34Images,
   5: step5Images,
 };

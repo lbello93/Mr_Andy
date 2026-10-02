@@ -12,6 +12,14 @@ import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 import Step5 from "./steps/Step5";
 
+const getTodayLocal = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
 export default function ContactHero() {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
@@ -38,7 +46,7 @@ export default function ContactHero() {
     }
 
     if (step === 3) {
-      if (!data.date) return;
+      if (!data.date || data.date < getTodayLocal()) return;
     }
 
     if (step === 4) {
@@ -77,6 +85,9 @@ export default function ContactHero() {
 
     return stepImages[step]?.[formData.occasion] ?? stepImages[1];
   };
+
+  const todayLocal = getTodayLocal();
+  const isDateInvalid = !formData.date || formData.date < todayLocal;
 
   return (
     <section className="contact-hero">
@@ -155,7 +166,10 @@ export default function ContactHero() {
 
             <Button
               onClick={nextStep}
-              disabled={step === 1 && formData.occasion === ""}
+              disabled={
+                (step === 1 && !formData.occasion) ||
+                (step === 3 && isDateInvalid)
+              }
             >
               {step === 5 ? "Submit" : "Next →"}
             </Button>
