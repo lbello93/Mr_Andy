@@ -1,7 +1,17 @@
 import "./Step3.css";
 import { CalendarDays } from "lucide-react";
 
+const getTodayLocal = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
 export default function Step3({ formData, setFormData }) {
+  const minDate = getTodayLocal();
+
   return (
     <>
       <div className="step-header">
@@ -22,6 +32,7 @@ export default function Step3({ formData, setFormData }) {
 
           <input
             type="date"
+            min={minDate}
             value={formData.date}
             onChange={(e) =>
               setFormData((prev) => ({

@@ -119,6 +119,18 @@
   margin-bottom: 8px;
 }
 
+.package-price {
+  font-family: "Playfair Display", serif;
+
+  font-size: 26px;
+
+  font-weight: 700;
+
+  color: #1c1b1b;
+
+  margin-bottom: 8px;
+}
+
 .package-header p {
   color: #5b4041;
 
