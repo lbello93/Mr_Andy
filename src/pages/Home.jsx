@@ -8,6 +8,7 @@ import Packages from "../sections/Packages/Packages";
 import HowItWorks from "../sections/HowItWorks/HowItWorks";
 import Testimonials from "../sections/Testimonials/Testimonials";
 import CTA from "../sections/CTA/CTA";
+import Footer from "../sections/Footer/Footer";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
       <Testimonials />
 
       <CTA />
+      <Footer />
     </>
   );
 }

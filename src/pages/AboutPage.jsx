@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar/Navbar";
 import AboutHero from "../sections/About/AboutHero";
 import AboutCTA from "../sections/AboutCTA/AboutCTA";
+import Footer from "../sections/Footer/Footer";
 import OurStory from "../sections/OurStory/OurStory";
 import Promise from "../sections/Promise/Promise";
 import Standards from "../sections/Standards/Standards";
@@ -16,6 +17,7 @@ export default function AboutPage() {
       <Standards />
       <Promise />
       <AboutCTA />
+      <Footer />
       {/* About Sections Here */}
     </>
   );

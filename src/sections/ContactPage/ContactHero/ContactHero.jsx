@@ -174,6 +174,7 @@ export default function ContactHero() {
             className="contact-image"
           />
         </div>
+        <Footer />
       </div>
     </section>
   );

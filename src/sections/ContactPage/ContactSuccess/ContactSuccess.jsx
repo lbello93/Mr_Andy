@@ -3,6 +3,7 @@ import "./ContactSuccess.css";
 import { CheckCircle2, ArrowRight, Home } from "lucide-react";
 import Button from "../../../components/Button/Button";
 import Navbar from "../../../components/Navbar/Navbar";
+import Footer from "../../Footer/Footer";
 
 export default function ContactSuccess() {
   return (
@@ -51,6 +52,7 @@ export default function ContactSuccess() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import Navbar from "../../components/Navbar/Navbar";
 import ContactHero from "../../sections/ContactPage/ContactHero/ContactHero";
+import Footer from "../../sections/Footer/Footer";
 
 import "./ContactPage.css";
 
@@ -9,6 +10,7 @@ export default function ContactPage() {
       <Navbar />
       <ContactHero />
       <div className="contact-bg" />
+      <Footer />
     </main>
   );
 }
