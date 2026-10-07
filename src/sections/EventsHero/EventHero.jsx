@@ -15,13 +15,9 @@ export default function EventHero() {
       ========================================= */}
 
       <span className="hero-dot dot-one"></span>
-
       <span className="hero-dot dot-two"></span>
-
       <span className="hero-dot dot-three"></span>
-
       <span className="hero-dot dot-four"></span>
-
       <span className="hero-dot dot-five"></span>
 
       {/* =========================================
@@ -59,9 +55,15 @@ export default function EventHero() {
           {/* Buttons */}
 
           <div className="hero-buttons">
-            <Button>Book Your Event</Button>
+            {/* Book Your Event → /contact */}
 
-            <Button variant="secondary">View Packages</Button>
+            <Button to="/contact">Book Your Event</Button>
+
+            {/* View Packages → /packages */}
+
+            <Button to="/packages" variant="secondary">
+              View Packages
+            </Button>
           </div>
         </div>
 

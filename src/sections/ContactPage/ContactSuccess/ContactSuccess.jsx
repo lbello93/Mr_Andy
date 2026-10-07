@@ -5,23 +5,26 @@ import Button from "../../../components/Button/Button";
 import Navbar from "../../../components/Navbar/Navbar";
 import Footer from "../../Footer/Footer";
 
+import { useNavigate } from "react-router-dom";
+
 export default function ContactSuccess() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar />
+
       <section className="contact-success">
         <div className="success-glow success-glow-left"></div>
         <div className="success-glow success-glow-right"></div>
 
         <div className="success-card">
           {/* Icon */}
-
           <div className="success-icon-wrapper">
             <CheckCircle2 size={90} strokeWidth={2.5} />
           </div>
 
           {/* Heading */}
-
           <div className="success-content">
             <h1>
               Sweet! We've
@@ -38,20 +41,24 @@ export default function ContactSuccess() {
           </div>
 
           {/* Buttons */}
-
           <div className="success-actions">
-            <Button>
+            <Button onClick={() => navigate("/")}>
               Back Home
               <ArrowRight size={16} />
             </Button>
 
-            <button className="secondary-btn">
+            <button
+              type="button"
+              className="secondary-btn"
+              onClick={() => navigate("/packages")}
+            >
               <Home size={16} />
               Explore Packages
             </button>
           </div>
         </div>
       </section>
+
       <Footer />
     </>
   );

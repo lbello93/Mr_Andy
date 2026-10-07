@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function EventCategories() {
   const eventCategories = [
@@ -66,17 +67,14 @@ export default function EventCategories() {
 
         .event-categories {
           width: 100%;
-
           box-sizing: border-box;
 
           display: flex;
           flex-direction: column;
-
           justify-content: center;
           align-items: center;
 
           padding: 96px 0;
-
           gap: 128px;
 
           background: #fcf9f8;
@@ -89,7 +87,6 @@ export default function EventCategories() {
         .event-card {
           width: 100%;
           max-width: 1280px;
-
           min-height: 303.91px;
 
           box-sizing: border-box;
@@ -101,13 +98,8 @@ export default function EventCategories() {
           align-items: center;
 
           padding: 0 64px;
-
           gap: 64px;
         }
-
-        /* =========================================
-           REVERSE ROW
-        ========================================= */
 
         .event-card.reverse {
           flex-direction: row-reverse;
@@ -122,11 +114,9 @@ export default function EventCategories() {
           height: 303.91px;
 
           flex: 1 1 0;
-
           min-width: 0;
 
           border-radius: 32px;
-
           overflow: hidden;
 
           background: rgba(255, 255, 255, 0.002);
@@ -142,7 +132,6 @@ export default function EventCategories() {
           display: block;
 
           object-fit: cover;
-
           border-radius: 32px;
         }
 
@@ -154,12 +143,10 @@ export default function EventCategories() {
           width: 544px;
 
           flex: 1 1 0;
-
           min-width: 0;
 
           display: flex;
           flex-direction: column;
-
           align-items: flex-start;
 
           gap: 23px;
@@ -173,11 +160,9 @@ export default function EventCategories() {
           width: 100%;
 
           margin: 0;
-
           padding: 0;
 
           font-family: "Playfair Display", serif;
-
           font-style: normal;
           font-weight: 700;
 
@@ -197,7 +182,6 @@ export default function EventCategories() {
           margin: 0;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-style: normal;
           font-weight: 700;
 
@@ -217,7 +201,6 @@ export default function EventCategories() {
           margin: 0;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-style: normal;
           font-weight: 400;
 
@@ -241,7 +224,6 @@ export default function EventCategories() {
 
           display: flex;
           flex-direction: column;
-
           align-items: flex-start;
 
           gap: 12px;
@@ -254,9 +236,7 @@ export default function EventCategories() {
           box-sizing: border-box;
 
           display: flex;
-
           flex-direction: row;
-
           align-items: center;
 
           gap: 12px;
@@ -265,16 +245,12 @@ export default function EventCategories() {
           padding: 0;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 16px;
           line-height: 24px;
-
           font-weight: 400;
 
           color: #1c1b1b;
         }
-
-        /* Figma uses small red square indicators */
 
         .event-check {
           width: 11.67px;
@@ -293,7 +269,6 @@ export default function EventCategories() {
 
         .event-quote {
           width: 100%;
-
           min-height: 123px;
 
           box-sizing: border-box;
@@ -306,11 +281,9 @@ export default function EventCategories() {
           background: #ffffff;
 
           border: 1px solid #e4bdbe;
-
           border-radius: 16px;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-style: italic;
           font-weight: 400;
 
@@ -332,7 +305,6 @@ export default function EventCategories() {
 
           display: flex;
           flex-direction: row;
-
           align-items: center;
 
           gap: 8px;
@@ -341,11 +313,9 @@ export default function EventCategories() {
           padding: 1px 0 0;
 
           background: transparent;
-
           border: none;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-style: normal;
           font-weight: 400;
 
@@ -353,11 +323,11 @@ export default function EventCategories() {
           line-height: 20px;
 
           letter-spacing: 1.4px;
-
           text-transform: uppercase;
 
           color: #b90235;
 
+          text-decoration: none;
           cursor: pointer;
         }
 
@@ -374,6 +344,10 @@ export default function EventCategories() {
           transition: transform 0.25s ease;
         }
 
+        .event-link:hover {
+          color: #920027;
+        }
+
         .event-link:hover svg {
           transform: translateX(5px);
         }
@@ -386,7 +360,6 @@ export default function EventCategories() {
           .event-card,
           .event-card.reverse {
             gap: 40px;
-
             padding: 0 40px;
           }
 
@@ -412,7 +385,6 @@ export default function EventCategories() {
         @media (max-width: 800px) {
           .event-categories {
             padding: 80px 24px;
-
             gap: 80px;
           }
 
@@ -426,9 +398,7 @@ export default function EventCategories() {
             padding: 0;
 
             display: flex;
-
             flex-direction: column;
-
             align-items: stretch;
 
             gap: 32px;
@@ -476,7 +446,6 @@ export default function EventCategories() {
         @media (max-width: 600px) {
           .event-categories {
             padding: 70px 20px;
-
             gap: 70px;
           }
 
@@ -487,7 +456,6 @@ export default function EventCategories() {
 
           .event-image {
             height: 250px;
-
             border-radius: 24px;
           }
 
@@ -541,13 +509,11 @@ export default function EventCategories() {
         @media (max-width: 400px) {
           .event-categories {
             padding: 60px 16px;
-
             gap: 60px;
           }
 
           .event-image {
             height: 220px;
-
             border-radius: 20px;
           }
 
@@ -607,7 +573,6 @@ export default function EventCategories() {
                   {event.points.map((point) => (
                     <li key={point}>
                       <span className="event-check"></span>
-
                       <span>{point}</span>
                     </li>
                   ))}
@@ -622,11 +587,10 @@ export default function EventCategories() {
 
               {/* CTA */}
 
-              <button type="button" className="event-link">
+              <Link to="/contact" className="event-link">
                 <span>Book Your Event</span>
-
                 <ArrowRight size={16} />
-              </button>
+              </Link>
             </div>
           </article>
         ))}
