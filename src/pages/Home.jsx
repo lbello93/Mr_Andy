@@ -27,7 +27,7 @@ export default function Home() {
 
       <HowItWorks />
 
-      <Testimonials />
+      {/* <Testimonials /> */}
 
       <CTA />
       <Footer />

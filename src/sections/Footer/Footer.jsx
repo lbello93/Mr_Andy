@@ -147,7 +147,9 @@ export default function Footer() {
         @media (max-width: 900px) {
           .footer-inner {
             width: 88%;
+
             grid-template-columns: 1.3fr 1fr 1fr;
+
             column-gap: 40px;
           }
 
@@ -235,19 +237,29 @@ export default function Footer() {
         <div className="footer-inner">
           {/* Logo */}
           <div className="footer-brand">
-            <img
-              src="/svg/footer.svg"
-              alt="Mr. Andy Candy Wall"
-              className="footer-logo"
-            />
+            <Link to="/">
+              <img
+                src="/svg/footer.svg"
+                alt="Mr. Andy Candy Wall"
+                className="footer-logo"
+              />
+            </Link>
           </div>
 
           {/* Quick Links */}
           <nav className="footer-links">
             <h3 className="footer-heading">Quick Links</h3>
 
+            <Link to="/" className="footer-link">
+              Home
+            </Link>
+
             <Link to="/packages" className="footer-link">
               Packages
+            </Link>
+
+            <Link to="/events" className="footer-link">
+              Events
             </Link>
 
             <Link to="/about" className="footer-link">
@@ -255,15 +267,7 @@ export default function Footer() {
             </Link>
 
             <Link to="/contact" className="footer-link">
-              Book Custom Candy Wall
-            </Link>
-
-            <Link to="/gallery" className="footer-link">
-              Gallery
-            </Link>
-
-            <Link to="/events" className="footer-link">
-              Events
+              Contact
             </Link>
           </nav>
 

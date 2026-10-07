@@ -1,10 +1,13 @@
 import { useState } from "react";
 import "./ContactHero.css";
+
 import Button from "../ContactHero/Button/Button";
 import OptionCard from "../../../components/Option/OptionCard";
 import ProgressBar from "./Progress/ProgressBar";
+
 import { stepImages } from "./images";
 import { occasions } from "./data";
+
 import { useNavigate } from "react-router-dom";
 
 import Step2 from "./steps/Step2";
@@ -14,14 +17,17 @@ import Step5 from "./steps/Step5";
 
 const getTodayLocal = () => {
   const today = new Date();
+
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, "0");
   const day = String(today.getDate()).padStart(2, "0");
+
   return `${year}-${month}-${day}`;
 };
 
 export default function ContactHero() {
   const [step, setStep] = useState(1);
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -35,30 +41,42 @@ export default function ContactHero() {
   });
 
   const nextStep = (overrides = {}) => {
-    const data = { ...formData, ...overrides };
+    const data = {
+      ...formData,
+      ...overrides,
+    };
 
+    // Step 1
     if (step === 1) {
       if (!data.occasion) return;
     }
 
+    // Step 2
     if (step === 2) {
       if (!data.guests) return;
     }
 
+    // Step 3
     if (step === 3) {
       if (!data.date || data.date < getTodayLocal()) return;
     }
 
+    // Step 4
     if (step === 4) {
       if (!data.vision.trim()) return;
     }
 
+    // Step 5
     if (step === 5) {
       const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      if (!data.name || !data.email || !data.phone) return;
+      if (!data.name || !data.email || !data.phone) {
+        return;
+      }
 
-      if (!EMAIL_RE.test(data.email.trim())) return;
+      if (!EMAIL_RE.test(data.email.trim())) {
+        return;
+      }
 
       console.log("Form Submitted:", data);
 
@@ -87,6 +105,7 @@ export default function ContactHero() {
   };
 
   const todayLocal = getTodayLocal();
+
   const isDateInvalid = !formData.date || formData.date < todayLocal;
 
   return (
@@ -159,7 +178,7 @@ export default function ContactHero() {
           {/* Navigation */}
           <div className="contact-navigation">
             {step > 1 && (
-              <button className="back-btn" onClick={prevStep}>
+              <button type="button" className="back-btn" onClick={prevStep}>
                 Back
               </button>
             )}
@@ -188,7 +207,6 @@ export default function ContactHero() {
             className="contact-image"
           />
         </div>
-        <Footer />
       </div>
     </section>
   );

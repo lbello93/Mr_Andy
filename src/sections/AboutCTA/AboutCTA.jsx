@@ -17,11 +17,11 @@ export default function AboutCTA() {
           Sweet
         </h2>
 
-        <p>
+        {/* <p>
           Whether you're planning an intimate gathering or a large-scale
           celebration, we're here to help make it unforgettable. Contact our
           design team to start brainstorming your custom candy installation.
-        </p>
+        </p> */}
 
         <Button to="/contact">Plan Your Celebration</Button>
       </div>

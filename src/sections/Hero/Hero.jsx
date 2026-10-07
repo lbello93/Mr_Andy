@@ -11,10 +11,6 @@ const Hero = () => {
           <div>
             {/* Badge */}
 
-            <span className="inline-flex items-center rounded-full bg-[#FFDADA] px-5 py-2 text-xs tracking-widest text-[#920027]">
-              PREMIUM CONFECTIONERY ART
-            </span>
-
             {/* Heading */}
 
             <h1 className="mt-8 font-serif text-6xl leading-tight">
@@ -29,7 +25,7 @@ const Hero = () => {
             {/* Description */}
 
             <p className="mt-8 max-w-xl text-[#5B4041] leading-8">
-              More than a dessert station. Custom candy wall experiences
+              More than a dessert station. Custom candy wall experiences are
               designed to delight guests, complement your event, and create
               unforgettable moments.
             </p>

@@ -5,7 +5,7 @@ export const packages = [
     id: "sweet-start",
     icon: BadgeCheck,
     title: "Sweet Start",
-    price: "$350.99",
+    price: "$349.99",
     subtitle: "Perfect for intimate celebrations.",
     description: "Perfect for intimate celebrations and small gatherings.",
     inclusions: [
@@ -29,7 +29,7 @@ export const packages = [
     id: "signature-celebration",
     icon: Star,
     title: "Signature Celebration",
-    price: "$450.90",
+    price: "$449.99",
     subtitle: "Our most popular experience.",
     description: "Our most popular experience, curated for standard events.",
     inclusions: [
@@ -56,7 +56,7 @@ export const packages = [
     id: "grand-experience",
     icon: Gem,
     title: "Grand Experience",
-    price: "$570.99",
+    price: "$569.99",
     subtitle: "Designed for statement events.",
     description: "Designed for large-scale events and luxury experiences.",
     inclusions: [
