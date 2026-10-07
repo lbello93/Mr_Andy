@@ -1,9 +1,11 @@
 @import "tailwindcss";
+
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
+  margin: 0;
   font-family: "Plus Jakarta Sans", sans-serif;
   background: #fcf9f8;
   color: #1c1b1b;
