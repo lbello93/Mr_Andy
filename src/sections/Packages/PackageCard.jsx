@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+
 export default function PackageCard({
   icon: Icon,
   title,
+  price,
   description,
   button,
   featured,
@@ -46,9 +49,15 @@ export default function PackageCard({
         <Icon size={34} className="text-[#B90235]" />
       </div>
 
-      <h3 className="mb-4 text-center font-playfair text-[38px] leading-none text-[#1C1B1B]">
+      <h3 className="mb-2 text-center font-playfair text-[32px] leading-tight text-[#1C1B1B]">
         {title}
       </h3>
+
+      {price && (
+        <p className="mb-4 text-center font-playfair text-[26px] font-bold text-[#B90235]">
+          {price}
+        </p>
+      )}
 
       <p className="mb-8 flex-1 text-center text-[16px] leading-8 text-[#5B4041]">
         {description}
@@ -56,8 +65,9 @@ export default function PackageCard({
 
       <div className="mb-6 h-px w-full bg-[#F2E6E6]" />
 
-      <button
-        className={`h-14 w-full rounded-full text-sm font-bold uppercase tracking-[0.08em] transition-all duration-300
+      <Link
+        to="/contact"
+        className={`flex h-14 w-full items-center justify-center rounded-full text-sm font-bold uppercase tracking-[0.08em] transition-all duration-300
       
       ${
         featured
@@ -66,7 +76,7 @@ export default function PackageCard({
       }`}
       >
         {button}
-      </button>
+      </Link>
     </article>
   );
 }

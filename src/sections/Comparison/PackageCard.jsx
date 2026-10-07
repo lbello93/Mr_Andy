@@ -2,11 +2,15 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function PackageCard({
   title,
+  price,
   subtitle,
   features,
+  inclusions,
   ideal,
   popular,
 }) {
+  const featureList = inclusions || features || [];
+
   return (
     <article className={`package-card ${popular ? "popular" : ""}`}>
       {popular && <div className="popular-tag">MOST POPULAR</div>}
@@ -14,11 +18,13 @@ export default function PackageCard({
       <div className="package-header">
         <h3>{title}</h3>
 
+        {price && <div className="package-price">{price}</div>}
+
         <p>{subtitle}</p>
       </div>
 
       <ul className="package-features">
-        {features.map((feature) => (
+        {featureList.map((feature) => (
           <li key={feature}>
             <CheckCircle2 size={16} strokeWidth={2} />
 

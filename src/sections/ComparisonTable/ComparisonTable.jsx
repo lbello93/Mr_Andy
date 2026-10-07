@@ -3,40 +3,46 @@ import { Check } from "lucide-react";
 
 const rows = [
   {
-    feature: "Candy Wall",
+    feature: "Candy Wall Display",
     sweet: true,
     signature: true,
     grand: true,
   },
   {
-    feature: "Premium Candy",
-    sweet: "Standard",
-    signature: "Premium + Custom",
-    grand: "Ultra-Premium",
+    feature: "Candy Selection",
+    sweet: "Premium",
+    signature: "Larger Premium",
+    grand: "Custom Premium",
   },
   {
-    feature: "Styling",
+    feature: "Setup & Styling",
     sweet: "Basic",
-    signature: "Themed",
-    grand: "Bespoke Artistry",
+    signature: "Theme Coordinated",
+    grand: "Bespoke Design",
   },
   {
-    feature: "Branding",
+    feature: "Custom Signage",
     sweet: "—",
-    signature: "Personalized",
+    signature: "✔ Decorative Signage",
+    grand: "✔ Custom Signage",
+  },
+  {
+    feature: "Corporate Branding",
+    sweet: "—",
+    signature: "—",
     grand: "✔ Full Corporate",
   },
   {
-    feature: "Refills",
-    sweet: "—",
-    signature: "Optional Add-on",
-    grand: "Included",
-  },
-  {
-    feature: "Event Support",
+    feature: "Event-Day Support",
     sweet: "—",
     signature: "—",
-    grand: "✔ On-site Staff",
+    grand: "✔ On-site Support",
+  },
+  {
+    feature: "Collection After Event",
+    sweet: true,
+    signature: true,
+    grand: true,
   },
 ];
 
@@ -52,8 +58,8 @@ export default function ComparisonTable() {
               <tr>
                 <th>Feature</th>
                 <th>Sweet Start</th>
-                <th className="highlight">Signature</th>
-                <th>Grand</th>
+                <th className="highlight">Signature Celebration</th>
+                <th>Grand Experience</th>
               </tr>
             </thead>
 
@@ -67,7 +73,7 @@ export default function ComparisonTable() {
                       key={index}
                       className={
                         typeof value === "string" &&
-                        (value.includes("✔") || value.includes("Premium"))
+                        (value.includes("✔") || value.includes("Premium") || value.includes("Bespoke"))
                           ? "accent"
                           : ""
                       }

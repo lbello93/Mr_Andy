@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import PackageCard from "./PackageCard";
 import { packages } from "../../data/packageData";
 
@@ -16,13 +17,13 @@ export default function Packages() {
           ))}
         </div>
 
-        <a
-          href="/"
+        <Link
+          to="/packages"
           className="mt-10 inline-flex items-center gap-2 uppercase tracking-[0.18em] text-[#5B4041] transition hover:text-[#B90235]"
         >
           Explore All Packages
           <ArrowUpRight size={18} />
-        </a>
+        </Link>
       </div>
     </section>
   );
