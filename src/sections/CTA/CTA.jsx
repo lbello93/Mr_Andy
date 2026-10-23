@@ -19,7 +19,7 @@ export default function CTA() {
   };
 
   return (
-    <section className="contact-section" id="contact">
+    <section id="contact" className="cta-section">
       <div className="contact-section-container">
         <div className="contact-card">
           {/* Left: Contact Form */}
