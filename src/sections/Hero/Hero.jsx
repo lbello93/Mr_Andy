@@ -50,7 +50,7 @@ const Hero = () => {
             {/* Hero Image */}
 
             <img
-              src="/svg/bro.jpeg"
+              src="/svg/bro.svg"
               alt="Candy Wall"
               className="relative rounded-3xl"
             />

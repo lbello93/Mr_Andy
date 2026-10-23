@@ -17,6 +17,6 @@ export const events = [
     id: 3,
     title: "Birthdays & Celebrations",
     description: "A playful feature guests of all ages enjoy.",
-    image: "/eventCard/b.png",
+    image: "/svg/b.svg",
   },
 ];
