@@ -16,7 +16,7 @@ export default function Gallery() {
             <p>Experience the scale and setup quality of MR. ANDY.</p>
           </div>
 
-          <a href="/" className="gallery-link">
+          <a href="/packages" className="gallery-link">
             Explore All
             <ArrowUpRight size={16} />
           </a>

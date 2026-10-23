@@ -6,7 +6,7 @@ export default function HowItWorks() {
   return (
     <section className="how-section">
       <div className="how-container">
-        <h2>The Journey to Joy</h2>
+        <h2>The Journey to Sweetness</h2>
 
         <div className="timeline">
           <div className="timeline-line" />

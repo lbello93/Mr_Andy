@@ -1,92 +1,197 @@
 import "./ComparisonTable.css";
-import { Check } from "lucide-react";
+import {
+  Check,
+  BadgeCheck,
+  Star,
+  Gem,
+  Candy,
+  Sparkles,
+  Palette,
+  Monitor,
+  Building2,
+  UserRound,
+  Truck,
+} from "lucide-react";
 
 const rows = [
   {
     feature: "Candy Wall Display",
+    icon: Candy,
     sweet: true,
     signature: true,
     grand: true,
   },
   {
     feature: "Candy Selection",
-    sweet: "Premium",
-    signature: "Larger Premium",
-    grand: "Custom Premium",
+    icon: Candy,
+    sweet: "Classic Favorites",
+    signature: "Expanded Premium Selection",
+    grand: "Premium & Custom Selection",
   },
   {
     feature: "Setup & Styling",
-    sweet: "Basic",
-    signature: "Theme Coordinated",
-    grand: "Bespoke Design",
+    icon: Sparkles,
+    sweet: "Standard Setup",
+    signature: "Theme-Coordinated Styling",
+    grand: "Bespoke Styling",
   },
   {
-    feature: "Custom Signage",
-    sweet: "—",
-    signature: "✔ Decorative Signage",
-    grand: "✔ Custom Signage",
+    feature: "Colour Coordination",
+    icon: Palette,
+    sweet: "Basic Colour Options",
+    signature: "Coordinated Colour Scheme",
+    grand: "Fully Customized Colour Scheme",
+  },
+  {
+    feature: "Signage",
+    icon: Monitor,
+    sweet: "Standard Display",
+    signature: "Decorative Signage",
+    grand: "Custom Signage",
   },
   {
     feature: "Corporate Branding",
+    icon: Building2,
     sweet: "—",
-    signature: "—",
-    grand: "✔ Full Corporate",
+    signature: "Optional Upgrade",
+    grand: true,
   },
   {
     feature: "Event-Day Support",
-    sweet: "—",
-    signature: "—",
-    grand: "✔ On-site Support",
+    icon: UserRound,
+    sweet: true,
+    signature: true,
+    grand: true,
   },
   {
-    feature: "Collection After Event",
+    feature: "Post-Event Collection",
+    icon: Truck,
     sweet: true,
     signature: true,
     grand: true,
   },
 ];
 
+const packages = [
+  {
+    id: "sweet",
+    title: "Sweet Start",
+    price: "$349.99",
+    icon: BadgeCheck,
+  },
+  {
+    id: "signature",
+    title: "Signature Celebration",
+    price: "$449.99",
+    icon: Star,
+    featured: true,
+    badge: "MOST POPULAR",
+  },
+  {
+    id: "grand",
+    title: "Grand Experience",
+    price: "$569.99",
+    icon: Gem,
+  },
+];
+
+function FeatureValue({ value }) {
+  if (value === true) {
+    return (
+      <span className="comparison-included">
+        <span className="comparison-check">
+          <Check size={17} strokeWidth={3} />
+        </span>
+        <span>Included</span>
+      </span>
+    );
+  }
+
+  return (
+    <span className={value === "—" ? "comparison-unavailable" : ""}>
+      {value}
+    </span>
+  );
+}
+
 export default function ComparisonTable() {
   return (
     <section className="comparison-table">
       <div className="comparison-container">
-        <h2>What's Included</h2>
+        <header className="comparison-heading">
+          <h2>What’s Included</h2>
+          <p>
+            Compare our packages to find the perfect candy experience for your
+            celebration.
+          </p>
+        </header>
 
         <div className="table-wrapper">
           <table>
             <thead>
               <tr>
-                <th>Feature</th>
-                <th>Sweet Start</th>
-                <th className="highlight">Signature Celebration</th>
-                <th>Grand Experience</th>
+                <th className="feature-heading">FEATURE</th>
+
+                {packages.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <th
+                      key={item.id}
+                      className={
+                        item.featured
+                          ? "package-heading highlight"
+                          : "package-heading"
+                      }
+                    >
+                      {item.featured && (
+                        <span className="popular-badge">{item.badge}</span>
+                      )}
+
+                      <Icon
+                        className="package-icon"
+                        size={43}
+                        strokeWidth={1.8}
+                      />
+
+                      <span className="package-title">{item.title}</span>
+
+                      <span className="package-price">{item.price}</span>
+                    </th>
+                  );
+                })}
               </tr>
             </thead>
 
             <tbody>
-              {rows.map((row) => (
-                <tr key={row.feature}>
-                  <td className="feature">{row.feature}</td>
+              {rows.map((row) => {
+                const Icon = row.icon;
 
-                  {[row.sweet, row.signature, row.grand].map((value, index) => (
-                    <td
-                      key={index}
-                      className={
-                        typeof value === "string" &&
-                        (value.includes("✔") || value.includes("Premium") || value.includes("Bespoke"))
-                          ? "accent"
-                          : ""
-                      }
-                    >
-                      {value === true ? (
-                        <Check size={18} strokeWidth={3} />
-                      ) : (
-                        value
-                      )}
+                return (
+                  <tr key={row.feature}>
+                    <td className="feature">
+                      <Icon
+                        className="feature-icon"
+                        size={29}
+                        strokeWidth={1.9}
+                      />
+                      <span>{row.feature}</span>
                     </td>
-                  ))}
-                </tr>
-              ))}
+
+                    <td>
+                      <FeatureValue value={row.sweet} />
+                    </td>
+
+                    <td className="highlight">
+                      <FeatureValue value={row.signature} />
+                    </td>
+
+                    <td>
+                      <FeatureValue value={row.grand} />
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
