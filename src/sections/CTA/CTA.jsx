@@ -13,8 +13,7 @@ import "./CTA.css";
 
 // Your Google Apps Script Web App URL
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyxH-Z-5vF2r_zrFdC81fqYEHKV2-rNEmihpMqZPrFKtIN5ROb6ZpYcu3vwgJ2vXEMKJQ/exec";
-
+  "https://script.google.com/macros/s/AKfycbx8E08a6o2H7VIJ56DVgmxBh8zJq9kLzgDSU4UUVoxkSZ4heoz56PX47vekDlXbK2kglQ/exec";
 export default function CTA() {
   const [status, setStatus] = useState("idle");
 
