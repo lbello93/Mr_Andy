@@ -69,13 +69,56 @@
       transition-duration: 0.01ms !important;
     }
   }
-}
-@keyframes logoPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.08); opacity: 0.85; }
-}
 
-@keyframes dotBounce {
-  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
-  40% { transform: translateY(-10px); opacity: 1; }
+  /* ============================
+     Loading Screen Animations
+  ============================ */
+
+  /* Logo reveal: scales up slightly and fades in, then clip-path
+     sweeps left-to-right to unveil the full logo */
+  .logo-reveal {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    animation:
+      logoFadeIn 0.4s ease forwards 0.2s,
+      logoReveal 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.3s;
+  }
+
+  @keyframes logoFadeIn {
+    to { opacity: 1; }
+  }
+
+  @keyframes logoReveal {
+    to { clip-path: inset(0 0 0 0); }
+  }
+
+  /* Decorative line expands from center */
+  .logo-line {
+    width: 0;
+    height: 2px;
+    margin-top: 16px;
+    background: linear-gradient(90deg, transparent, #b90235, transparent);
+    border-radius: 9999px;
+    animation: lineExpand 0.6s ease forwards 1.3s;
+  }
+
+  @keyframes lineExpand {
+    to { width: 120px; }
+  }
+
+  /* Bouncing dots */
+  .loading-dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: #b90235;
+    opacity: 0;
+    animation: dotBounce 1.4s ease-in-out infinite var(--dot-delay, 0s);
+  }
+
+  @keyframes dotBounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.3; }
+    40% { transform: translateY(-10px); opacity: 1; }
+  }
 }

@@ -5,8 +5,7 @@ export default function LoadingScreen() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    // Minimum display time so the animation completes
-    const timer = setTimeout(() => setFadeOut(true), 1800);
+    const timer = setTimeout(() => setFadeOut(true), 2400);
     return () => clearTimeout(timer);
   }, []);
 
@@ -25,17 +24,23 @@ export default function LoadingScreen() {
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
     >
-      <img
-        src="/svg/logo.svg"
-        alt=""
-        className="h-20 animate-[logoPulse_1.6s_ease-in-out_infinite]"
-      />
+      {/* Logo with left-to-right reveal */}
+      <div className="logo-reveal">
+        <img
+          src="/svg/logo.svg"
+          alt=""
+          className="h-[80px] w-auto max-w-[85vw] max-[480px]:h-[56px]"
+        />
+      </div>
 
-      {/* Animated dots */}
-      <div className="mt-8 flex gap-2">
-        <span className="size-2.5 animate-[dotBounce_1.4s_ease-in-out_infinite] rounded-full bg-brand" />
-        <span className="size-2.5 animate-[dotBounce_1.4s_ease-in-out_0.2s_infinite] rounded-full bg-brand" />
-        <span className="size-2.5 animate-[dotBounce_1.4s_ease-in-out_0.4s_infinite] rounded-full bg-brand" />
+      {/* Decorative line expanding outward */}
+      <div className="logo-line" />
+
+      {/* Loading dots */}
+      <div className="mt-6 flex gap-2.5">
+        <span className="loading-dot" style={{ "--dot-delay": "1.4s" }} />
+        <span className="loading-dot" style={{ "--dot-delay": "1.6s" }} />
+        <span className="loading-dot" style={{ "--dot-delay": "1.8s" }} />
       </div>
     </div>
   );
