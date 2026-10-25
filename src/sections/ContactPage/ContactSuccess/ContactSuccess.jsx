@@ -2,8 +2,6 @@ import "./ContactSuccess.css";
 
 import { CheckCircle2, ArrowRight, Home } from "lucide-react";
 import Button from "../../../components/Button/Button";
-import Navbar from "../../../components/Navbar/Navbar";
-import Footer from "../../Footer/Footer";
 
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +10,6 @@ export default function ContactSuccess() {
 
   return (
     <>
-      <Navbar />
 
       <section className="contact-success">
         <div className="success-glow success-glow-left"></div>
@@ -59,7 +56,6 @@ export default function ContactSuccess() {
         </div>
       </section>
 
-      <Footer />
     </>
   );
 }
