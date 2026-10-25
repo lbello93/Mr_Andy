@@ -1,130 +1,91 @@
 import { useState } from "react";
-import "./ContactHero.css";
+import { useNavigate } from "react-router-dom";
 
 import Button from "../../../components/Button/Button";
 import OptionCard from "../../../components/Option/OptionCard";
 import ProgressBar from "./Progress/ProgressBar";
-
-import { stepImages } from "./images";
-import { occasions } from "./data";
-
-import { useNavigate } from "react-router-dom";
-
 import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 import Step5 from "./steps/Step5";
 
+import { stepImages } from "./images";
+import { occasions } from "./data";
+import { submitInquiry } from "../../../lib/submitInquiry";
+
 const getTodayLocal = () => {
-  const today = new Date();
-
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 };
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function isStepValid(step, d) {
+  switch (step) {
+    case 1: return Boolean(d.occasion);
+    case 2: return Boolean(d.guests);
+    case 3: return Boolean(d.date) && d.date >= getTodayLocal();
+    case 4: return Boolean(d.vision?.trim());
+    case 5: {
+      if (!d.name?.trim() || !d.email?.trim() || !d.phone?.trim()) return false;
+      if (!EMAIL_RE.test(d.email.trim())) return false;
+      const digits = d.phone.replace(/\D/g, "");
+      return digits.length >= 7 && digits.length <= 15;
+    }
+    default: return false;
+  }
+}
 
 export default function ContactHero() {
   const [step, setStep] = useState(1);
-
+  const [status, setStatus] = useState("idle");
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    occasion: "",
-    guests: "",
-    date: "",
-    vision: "",
-    name: "",
-    email: "",
-    phone: "",
+    occasion: "", guests: "", date: "", vision: "", name: "", email: "", phone: "",
   });
 
-  const nextStep = (overrides = {}) => {
-    const data = {
-      ...formData,
-      ...overrides,
-    };
+  const nextStep = async (overrides = {}) => {
+    const data = { ...formData, ...overrides };
+    if (!isStepValid(step, data)) return;
 
-    // Step 1
-    if (step === 1) {
-      if (!data.occasion) return;
-    }
-
-    // Step 2
-    if (step === 2) {
-      if (!data.guests) return;
-    }
-
-    // Step 3
-    if (step === 3) {
-      if (!data.date || data.date < getTodayLocal()) return;
-    }
-
-    // Step 4
-    if (step === 4) {
-      if (!data.vision.trim()) return;
-    }
-
-    // Step 5
     if (step === 5) {
-      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!data.name || !data.email || !data.phone) {
-        return;
+      setStatus("loading");
+      try {
+        await submitInquiry({ ...data, source: "booking-wizard" });
+        navigate("/contact/success");
+      } catch {
+        setStatus("error");
       }
-
-      if (!EMAIL_RE.test(data.email.trim())) {
-        return;
-      }
-
-      console.log("Form Submitted:", data);
-
-      // TODO: Send to backend
-
-      navigate("/contact/success");
-
       return;
     }
 
     setStep((prev) => prev + 1);
   };
 
-  const prevStep = () => {
-    if (step > 1) {
-      setStep((prev) => prev - 1);
-    }
-  };
+  const prevStep = () => { if (step > 1) setStep((prev) => prev - 1); };
 
   const getCurrentImage = () => {
-    if (step === 1) {
-      return stepImages[1];
-    }
-
+    if (step === 1) return stepImages[1];
     return stepImages[step]?.[formData.occasion] ?? stepImages[1];
   };
 
-  const todayLocal = getTodayLocal();
-
-  const isDateInvalid = !formData.date || formData.date < todayLocal;
-
   return (
-    <section className="contact-hero">
-      <div className="contact-wrapper">
-        {/* LEFT */}
-        <div className="contact-left">
+    <section className="relative w-full min-h-[calc(100vh-96px)] min-h-[calc(100svh-96px)] overflow-hidden py-20 max-[768px]:py-[60px]">
+      <div className="mx-auto grid w-[1280px] max-w-[calc(100%-128px)] grid-cols-[430px_1fr] items-center gap-20 max-[1200px]:max-w-[calc(100%-80px)] max-[1200px]:grid-cols-1 max-[1200px]:gap-[60px] max-[768px]:max-w-[calc(100%-40px)]">
+        <div className="flex flex-col gap-10">
           <ProgressBar step={step} totalSteps={5} />
 
-          {/* STEP 1 */}
           {step === 1 && (
             <>
-              <div className="step-header">
-                <h1>What are you celebrating?</h1>
-
-                <p>Select the occasion that best describes your event.</p>
+              <div className="mb-10">
+                <h1 className="font-serif text-[32px] font-bold leading-[42px] text-ink">
+                  What are you celebrating?
+                </h1>
+                <p className="mt-2 text-muted">Select the occasion that best describes your event.</p>
               </div>
 
-              <div className="option-grid">
+              <div className="grid grid-cols-2 gap-4 max-[768px]:grid-cols-1">
                 {occasions.map((item) => (
                   <OptionCard
                     key={item.id}
@@ -132,14 +93,8 @@ export default function ContactHero() {
                     icon={item.icon}
                     active={formData.occasion === item.title}
                     onClick={() => {
-                      setFormData((prev) => ({
-                        ...prev,
-                        occasion: item.title,
-                      }));
-
-                      nextStep({
-                        occasion: item.title,
-                      });
+                      setFormData((prev) => ({ ...prev, occasion: item.title }));
+                      nextStep({ occasion: item.title });
                     }}
                   />
                 ))}
@@ -147,38 +102,18 @@ export default function ContactHero() {
             </>
           )}
 
-          {/* STEP 2 */}
-          {step === 2 && (
-            <Step2
-              formData={formData}
-              setFormData={setFormData}
-              onSelect={nextStep}
-            />
-          )}
+          {step === 2 && <Step2 formData={formData} setFormData={setFormData} onSelect={nextStep} />}
+          {step === 3 && <Step3 formData={formData} setFormData={setFormData} onSelect={nextStep} />}
+          {step === 4 && <Step4 formData={formData} setFormData={setFormData} />}
+          {step === 5 && <Step5 formData={formData} setFormData={setFormData} />}
 
-          {/* STEP 3 */}
-          {step === 3 && (
-            <Step3
-              formData={formData}
-              setFormData={setFormData}
-              onSelect={nextStep}
-            />
-          )}
-
-          {/* STEP 4 */}
-          {step === 4 && (
-            <Step4 formData={formData} setFormData={setFormData} />
-          )}
-
-          {/* STEP 5 */}
-          {step === 5 && (
-            <Step5 formData={formData} setFormData={setFormData} />
-          )}
-
-          {/* Navigation */}
-          <div className="contact-navigation">
+          <div className="mt-5 flex items-center gap-[18px] max-[768px]:flex-col">
             {step > 1 && (
-              <button type="button" className="contact-back-btn" onClick={prevStep}>
+              <button
+                type="button"
+                onClick={prevStep}
+                className="h-14 cursor-pointer rounded-full border-2 border-brand bg-white px-7 text-[15px] font-semibold text-brand transition-colors duration-300 hover:bg-brand hover:text-white max-[768px]:w-full"
+              >
                 Back
               </button>
             )}
@@ -186,25 +121,25 @@ export default function ContactHero() {
             <Button
               onClick={() => nextStep()}
               disabled={
-                (step === 1 && !formData.occasion) ||
-                (step === 3 && isDateInvalid)
+                !isStepValid(step, formData) || status === "loading"
               }
             >
-              {step === 5 ? "Submit" : "Next →"}
+              {status === "loading" ? "Submitting\u2026" : step === 5 ? "Submit" : "Next \u2192"}
             </Button>
           </div>
+
+          {status === "error" && (
+            <p role="alert" className="text-[13px] font-medium text-brand">
+              Something went wrong. Please try again or call 832-633-2404.
+            </p>
+          )}
         </div>
 
-        {/* RIGHT */}
-        <div className="contact-right">
+        <div className="flex items-center justify-center max-[1200px]:order-[-1]">
           <img
             src={getCurrentImage()}
-            alt={
-              formData.occasion
-                ? `${formData.occasion} illustration`
-                : "Contact illustration"
-            }
-            className="contact-image"
+            alt={formData.occasion ? `${formData.occasion} illustration` : "Contact illustration"}
+            className="block w-full max-w-[760px] object-contain max-[1200px]:max-w-[520px]"
           />
         </div>
       </div>

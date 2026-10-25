@@ -24,6 +24,11 @@
   --shadow-soft: 0 20px 20px -5px rgb(185 2 53 / 0.08);
 }
 
+@utility min-h-page {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
@@ -51,7 +56,6 @@
   input:not([type="checkbox"]):not([type="radio"]),
   textarea { -webkit-appearance: none; appearance: none; }
 
-  /* iOS Safari zooms the page when a focused field is under 16px */
   @supports (-webkit-touch-callout: none) {
     input, textarea, select { font-size: 16px; }
   }
@@ -65,8 +69,4 @@
       transition-duration: 0.01ms !important;
     }
   }
-}
-@utility min-h-page {
-  min-height: 100vh;
-  min-height: 100svh;
 }
