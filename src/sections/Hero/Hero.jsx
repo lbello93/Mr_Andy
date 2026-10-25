@@ -15,7 +15,7 @@ const Hero = () => {
 
             <h1 className="mt-8 font-serif text-6xl leading-tight">
               The
-              <span className="text-[#DD2A4B] italic"> Sweetest</span>
+              <span className="text-rose italic"> Sweetest</span>
               <br />
               Part of Every
               <br />
@@ -24,7 +24,7 @@ const Hero = () => {
 
             {/* Description */}
 
-            <p className="mt-8 max-w-xl text-[#5B4041] leading-8">
+            <p className="mt-8 max-w-xl text-muted leading-8">
               More than a dessert station. Custom candy wall experiences are
               designed to delight guests, complement your event, and create
               unforgettable moments.
@@ -34,7 +34,7 @@ const Hero = () => {
 
             <Link
               to="/contact"
-              className="inline-block mt-10 rounded-full bg-gradient-to-b from-[#DD2A4B] to-[#B90235] px-8 py-4 text-white shadow-lg"
+              className="inline-block mt-10 rounded-full bg-gradient-to-b from-rose to-brand px-8 py-4 text-white shadow-lg"
             >
               Design Your Experience →
             </Link>

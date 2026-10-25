@@ -1,26 +1,26 @@
 // Step 1
-import step1 from "/steps/Step1.png";
+const step1 = "/steps/Step1.png";
 
 /* ---------- Step 2 ---------- */
-import corporate2 from "/steps/corporate-step2.png";
-import wedding2 from "/steps/wedding-step2.png";
-import birthday2 from "/steps/birthday-step2.png";
-import baby2 from "/steps/baby-step2.png";
-import graduation2 from "/steps/graduation-step2.png";
+const corporate2 = "/steps/corporate-step2.png";
+const wedding2 = "/steps/wedding-step2.png";
+const birthday2 = "/steps/birthday-step2.png";
+const baby2 = "/steps/baby-step2.png";
+const graduation2 = "/steps/graduation-step2.png";
 
 /* ---------- Step 3 & Step 4 (Common Images) ---------- */
-import corporate34 from "/steps/corporate-step34.png";
-import wedding34 from "/steps/wedding-step34.png";
-import birthday34 from "/steps/birthday-step34.png";
-import baby34 from "/steps/baby-step34.png";
-import graduation34 from "/steps/graduation-step34.png";
+const corporate34 = "/steps/corporate-step34.png";
+const wedding34 = "/steps/wedding-step34.png";
+const birthday34 = "/steps/birthday-step34.png";
+const baby34 = "/steps/baby-step34.png";
+const graduation34 = "/steps/graduation-step34.png";
 
 /* ---------- Step 5 ---------- */
-import corporate5 from "/steps/corporate-step5.png";
-import wedding5 from "/steps/wedding-step5.png";
-import birthday5 from "/steps/birthday-step5.png";
-import baby5 from "/steps/baby-step5.png";
-import graduation5 from "/steps/graduation-step5.png";
+const corporate5 = "/steps/corporate-step5.png";
+const wedding5 = "/steps/wedding-step5.png";
+const birthday5 = "/steps/birthday-step5.png";
+const baby5 = "/steps/baby-step5.png";
+const graduation5 = "/steps/graduation-step5.png";
 
 const step2Images = {
   "Corporate Event": corporate2,

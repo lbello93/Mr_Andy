@@ -99,7 +99,7 @@ const Navbar = () => {
                 <Link
                   to={link.href}
                   onClick={(event) => handleNavClick(event, link.href)}
-                  className="text-sm uppercase tracking-wider text-[#1C1B1B] transition-colors duration-300 hover:text-[#B90235]"
+                  className="text-sm uppercase tracking-wider text-ink transition-colors duration-300 hover:text-brand"
                 >
                   {link.title}
                 </Link>
@@ -113,7 +113,7 @@ const Navbar = () => {
           <Link
             to="/contact"
             onClick={() => setIsOpen(false)}
-            className="rounded-full bg-[#B90235] px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:bg-[#9f012d] hover:shadow-lg sm:px-6 sm:py-3 sm:text-sm"
+            className="rounded-full bg-brand px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:bg-[#9f012d] hover:shadow-lg sm:px-6 sm:py-3 sm:text-sm"
           >
             Book Now
           </Link>
@@ -122,7 +122,7 @@ const Navbar = () => {
           <button
             type="button"
             onClick={() => setIsOpen((previous) => !previous)}
-            className="p-2 text-[#1C1B1B] transition-colors hover:text-[#B90235] focus:outline-none lg:hidden"
+            className="p-2 text-ink transition-colors hover:text-brand focus:outline-none lg:hidden"
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
@@ -153,14 +153,14 @@ const Navbar = () => {
       >
         <div>
           <div className="mb-10 flex items-center justify-between">
-            <span className="text-sm font-semibold uppercase tracking-wider text-[#B90235]">
+            <span className="text-sm font-semibold uppercase tracking-wider text-brand">
               Menu
             </span>
 
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="p-2 text-[#1C1B1B] transition-colors hover:text-[#B90235] focus:outline-none"
+              className="p-2 text-ink transition-colors hover:text-brand focus:outline-none"
               aria-label="Close menu"
             >
               <X size={24} />
@@ -175,7 +175,7 @@ const Navbar = () => {
                     to={link.href}
                     onClick={(event) => handleNavClick(event, link.href)}
                     tabIndex={isOpen ? 0 : -1}
-                    className="block text-base font-semibold uppercase tracking-wider text-[#1C1B1B] transition-colors duration-300 hover:text-[#B90235]"
+                    className="block text-base font-semibold uppercase tracking-wider text-ink transition-colors duration-300 hover:text-brand"
                   >
                     {link.title}
                   </Link>
@@ -191,7 +191,7 @@ const Navbar = () => {
             to="/contact"
             onClick={() => setIsOpen(false)}
             tabIndex={isOpen ? 0 : -1}
-            className="block rounded-full bg-[#B90235] px-6 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:bg-[#9f012d] hover:shadow-lg"
+            className="block rounded-full bg-brand px-6 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:bg-[#9f012d] hover:shadow-lg"
           >
             Book Now
           </Link>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ContactHero.css";
 
-import Button from "../ContactHero/Button/Button";
+import Button from "../../../components/Button/Button";
 import OptionCard from "../../../components/Option/OptionCard";
 import ProgressBar from "./Progress/ProgressBar";
 
@@ -178,13 +178,13 @@ export default function ContactHero() {
           {/* Navigation */}
           <div className="contact-navigation">
             {step > 1 && (
-              <button type="button" className="back-btn" onClick={prevStep}>
+              <button type="button" className="contact-back-btn" onClick={prevStep}>
                 Back
               </button>
             )}
 
             <Button
-              onClick={nextStep}
+              onClick={() => nextStep()}
               disabled={
                 (step === 1 && !formData.occasion) ||
                 (step === 3 && isDateInvalid)

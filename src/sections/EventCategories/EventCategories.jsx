@@ -59,7 +59,6 @@ export default function EventCategories() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap');
 
         /* =========================================
            EVENT CATEGORIES

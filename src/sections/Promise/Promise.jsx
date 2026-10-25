@@ -1,10 +1,9 @@
 import { Heart } from "lucide-react";
 
-export default function Promise() {
+export default function OurPromise() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;700&display=swap');
 
         /* =========================================
            OUR PROMISE

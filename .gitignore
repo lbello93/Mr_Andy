@@ -26,3 +26,7 @@ dist-ssr
 test-results
 playwright-report
 baseline
+
+test-results
+playwright-report
+baseline

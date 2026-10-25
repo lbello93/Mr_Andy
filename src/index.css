@@ -1,163 +1,68 @@
 @import "tailwindcss";
 
-html {
-  scroll-behavior: auto;
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-dm: "DM Sans", Arial, sans-serif;
+
+  --color-brand: #b90235;
+  --color-brand-dark: #920027;
+  --color-rose: #dd2a4b;
+  --color-rose-light: #eb436d;
+  --color-blush: #fff5f7;
+  --color-page: #fcf9f8;
+  --color-surface: #f6f3f2;
+  --color-ink: #1c1b1b;
+  --color-muted: #5b4041;
+  --color-line: #eae7e7;
+  --color-gold: #fcd03d;
+  --color-gold-dark: #745c00;
+  --color-leaf: #18684d;
+
+  --shadow-card: 0 20px 25px -5px rgb(185 2 53 / 0.08);
+  --shadow-soft: 0 20px 20px -5px rgb(185 2 53 / 0.08);
 }
 
-body {
-  margin: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  background: #fcf9f8;
-  color: #1c1b1b;
-}
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: "Playfair Display", serif;
-}
-
-/* =========================================
-   1. Consistent box sizing
-========================================= */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* =========================================
-   2. Normalize document sizing
-========================================= */
-
-html {
-  width: 100%;
-  min-height: 100%;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  scroll-behavior: smooth;
-}
-
-body {
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow-wrap: break-word;
-}
-
-/* Modern viewport support */
-@supports (min-height: 100svh) {
   body {
+    margin: 0;
+    min-height: 100vh;
     min-height: 100svh;
+    background: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-}
 
-/* =========================================
-   3. Consistent media sizing
-========================================= */
+  h1, h2, h3, h4 { font-family: var(--font-serif); }
 
-img,
-picture,
-video,
-canvas,
-svg {
-  max-width: 100%;
-}
+  button, input, select, textarea { font: inherit; }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea { -webkit-appearance: none; appearance: none; }
 
-img,
-video {
-  height: auto;
-}
-
-img {
-  display: block;
-}
-
-/* =========================================
-   4. Consistent form controls
-========================================= */
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-button,
-input,
-select,
-textarea {
-  max-width: 100%;
-}
-
-button {
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: not-allowed;
-}
-
-/* =========================================
-   5. Prevent flex/grid overflow
-========================================= */
-
-:where(main, section, article, aside, header, footer, nav) {
-  min-width: 0;
-}
-
-:where(main, section, article, aside, header, footer, nav) > * {
-  min-width: 0;
-}
-
-/* =========================================
-   6. Responsive page boundaries
-========================================= */
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-  min-width: 0;
-}
-
-@supports (min-height: 100svh) {
-  #root {
-    min-height: 100svh;
+  /* iOS Safari zooms the page when a focused field is under 16px */
+  @supports (-webkit-touch-callout: none) {
+    input, textarea, select { font-size: 16px; }
   }
-}
 
-/* =========================================
-   7. Consistent table behavior
-========================================= */
+  :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 3px; }
 
-table {
-  max-width: 100%;
-}
-
-/* =========================================
-   8. Accessible focus indicators
-========================================= */
-
-:focus-visible {
-  outline: 2px solid #7c3aed;
-  outline-offset: 3px;
-}
-
-/* =========================================
-   9. Respect reduced-motion preferences
-========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }

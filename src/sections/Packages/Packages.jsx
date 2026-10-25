@@ -5,9 +5,9 @@ import { packages } from "../../data/packageData";
 
 export default function Packages() {
   return (
-    <section className="bg-[#FCF9F8] py-28">
+    <section className="bg-page py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-12 text-center">
-        <h2 className="mb-16 font-playfair text-5xl font-bold text-[#1C1B1B]">
+        <h2 className="mb-16 font-playfair text-5xl font-bold text-ink">
           The Sweetest Selection
         </h2>
 
@@ -19,7 +19,7 @@ export default function Packages() {
 
         <Link
           to="/packages"
-          className="mt-10 inline-flex items-center gap-2 uppercase tracking-[0.18em] text-[#5B4041] transition hover:text-[#B90235]"
+          className="mt-10 inline-flex items-center gap-2 uppercase tracking-[0.18em] text-muted transition hover:text-brand"
         >
           Explore All Packages
           <ArrowUpRight size={18} />

@@ -34,32 +34,32 @@ export default function PackageCard({
 
     ${
       featured
-        ? "border-[#B90235] bg-gradient-to-b from-[#FFF5F6] to-white shadow-lg"
+        ? "border-brand bg-gradient-to-b from-[#FFF5F6] to-white shadow-lg"
         : "border-[#F0D8D8]"
     }
   `}
     >
       {badge && (
-        <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-[#B90235] px-5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-white">
+        <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-brand px-5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-white">
           {badge}
         </span>
       )}
 
       <div className="mb-6 flex justify-center">
-        <Icon size={34} className="text-[#B90235]" />
+        <Icon size={34} className="text-brand" />
       </div>
 
-      <h3 className="mb-2 text-center font-playfair text-[32px] leading-tight text-[#1C1B1B]">
+      <h3 className="mb-2 text-center font-playfair text-[32px] leading-tight text-ink">
         {title}
       </h3>
 
       {price && (
-        <p className="mb-4 text-center font-playfair text-[26px] font-bold text-[#B90235]">
+        <p className="mb-4 text-center font-playfair text-[26px] font-bold text-brand">
           {price}
         </p>
       )}
 
-      <p className="mb-8 flex-1 text-center text-[16px] leading-8 text-[#5B4041]">
+      <p className="mb-8 flex-1 text-center text-[16px] leading-8 text-muted">
         {description}
       </p>
 
@@ -71,8 +71,8 @@ export default function PackageCard({
       
       ${
         featured
-          ? "bg-gradient-to-b from-[#DD2A4B] to-[#B90235] text-white shadow-lg hover:scale-[1.02]"
-          : "border-2 border-[#B90235] bg-white text-[#B90235] hover:bg-[#B90235] hover:text-white"
+          ? "bg-gradient-to-b from-rose to-brand text-white shadow-lg hover:scale-[1.02]"
+          : "border-2 border-brand bg-white text-brand hover:bg-brand hover:text-white"
       }`}
       >
         {button}

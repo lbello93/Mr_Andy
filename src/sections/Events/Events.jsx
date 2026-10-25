@@ -4,7 +4,7 @@ import { events } from "../../data/events";
 
 const Events = () => {
   return (
-    <section id="events" className="bg-[#FCF9F8] py-28">
+    <section id="events" className="bg-page py-28">
       <Container>
         <div className="text-center">
           <h2 className="text-5xl font-serif">Curated For Your Celebration</h2>

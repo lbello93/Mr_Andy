@@ -9,7 +9,7 @@
   position: fixed;
   inset: 0;
 
-  background-image: url("../../../public/Image.png");
+  background-image: url("/Image.png");
 
   background-repeat: no-repeat;
   background-size: cover;

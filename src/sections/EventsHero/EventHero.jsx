@@ -5,7 +5,7 @@ import FloatingCard from "./FloatingCard";
 
 import { floatingCards } from "./floatingCards";
 
-import heroImage from "/gallery/eventHero.png";
+const heroImage = "/gallery/eventHero.png";
 
 export default function EventHero() {
   return (
