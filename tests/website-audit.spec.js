@@ -20,7 +20,14 @@ for (const route of ROUTES) {
       }
       window.scrollTo(0, 0);
     });
-    await page.waitForFunction(() => [...document.images].every((i) => i.complete));
+    await page
+      .waitForFunction(() => [...document.images].every((i) => i.complete), null, { timeout: 15000 })
+      .catch(async () => {
+        const stuck = await page.evaluate(() =>
+          [...document.images].filter((i) => !i.complete).map((i) => i.currentSrc || i.src)
+        );
+        throw new Error("Images never finished loading: " + JSON.stringify(stuck, null, 2));
+      });
 
     const layout = await page.evaluate(() => {
       const w = Math.max(document.documentElement.scrollWidth, document.body.scrollWidth);
