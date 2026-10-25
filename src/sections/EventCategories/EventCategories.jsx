@@ -8,7 +8,7 @@ const eventCategories = [
     description:
       "Elevate your corporate identity with a candy experience that leaves a lasting impression. From Employee Appreciation days to high-stakes Product Launches, we customize every detail to match your brand's palette and tone.",
     points: ["Custom Branding", "Logo Integrated Displays", "Branded Candy Wrappers"],
-    image: "/eventCard/cor.png",
+    image: "/eventCard/cor.webp",
     reverse: false,
   },
   {
@@ -16,7 +16,7 @@ const eventCategories = [
     subtitle: "Make every birthday sweeter.",
     description:
       "Whether it's a whimsical 1st birthday or a glam Sweet 16, our candy walls are the ultimate party showstopper. We create vibrant, rainbow-filled displays that delight guests of all ages.",
-    image: "/eventCard/bir.png",
+    image: "/eventCard/bir.webp",
     reverse: true,
   },
   {
@@ -24,7 +24,7 @@ const eventCategories = [
     subtitle: "Celebrate life's sweetest arrival.",
     description:
       "Our baby shower candy walls are designed with a delicate touch. Think soft pastels, whimsical florals, and a menu of treats as sweet as the new arrival.",
-    image: "/eventCard/baby.png",
+    image: "/eventCard/baby.webp",
     reverse: false,
   },
   {
@@ -34,7 +34,7 @@ const eventCategories = [
       "Luxury meets confectionery. Our wedding displays use premium glass, organic floral integrations, and sophisticated monochromatic palettes like blush and ivory to complement your decor perfectly.",
     quote:
       "The candy wall was the highlight of our reception and became the most photographed moment of the evening.",
-    image: "/eventCard/wedd.png",
+    image: "/eventCard/wedd.webp",
     reverse: true,
   },
   {
@@ -42,7 +42,7 @@ const eventCategories = [
     subtitle: "Celebrate every achievement.",
     description:
       "Reward years of hard work with a prestigious gold and black themed display. Perfect for high school graduations and university celebrations alike.",
-    image: "/eventCard/grad.png",
+    image: "/eventCard/grad.webp",
     reverse: false,
   },
 ];

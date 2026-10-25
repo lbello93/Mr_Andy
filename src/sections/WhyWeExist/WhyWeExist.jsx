@@ -7,7 +7,7 @@ export default function WhyWeExist() {
       <div className="mx-auto grid max-w-[1280px] grid-cols-2 items-center gap-16 px-16 max-[992px]:grid-cols-1 max-[768px]:px-6">
         <div className="relative">
           <img
-            src="/gallery/why.png"
+            src="/gallery/why.webp"
             alt="Candy wall at an event"
             loading="lazy"
             decoding="async"

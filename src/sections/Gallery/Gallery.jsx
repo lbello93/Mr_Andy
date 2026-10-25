@@ -2,9 +2,9 @@ import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const galleryImages = [
-  { src: "/gallery/gallery1.png", alt: "Guests exploring the MR. ANDY candy wall" },
-  { src: "/gallery/gallery2.png", alt: "Close-up of the premium candy dispensers" },
-  { src: "/gallery/gallery3.png", alt: "MR. ANDY candy wall display at an event" },
+  { src: "/gallery/gallery1.webp", alt: "Guests exploring the MR. ANDY candy wall" },
+  { src: "/gallery/gallery2.webp", alt: "Close-up of the premium candy dispensers" },
+  { src: "/gallery/gallery3.webp", alt: "MR. ANDY candy wall display at an event" },
 ];
 
 export default function Gallery() {

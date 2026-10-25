@@ -47,7 +47,7 @@ export default function AboutHero() {
 
         <div className="isolate h-[690px] w-full overflow-hidden rounded-[32px] shadow-card max-[1100px]:h-[600px] max-[768px]:h-[550px] max-[768px]:rounded-[28px] max-[480px]:h-[450px] max-[480px]:rounded-3xl">
           <img
-            src="/svg/abouthero.png"
+            src="/svg/abouthero.webp"
             alt="People interacting with a candy wall"
             className="h-full w-full object-cover object-center"
           />

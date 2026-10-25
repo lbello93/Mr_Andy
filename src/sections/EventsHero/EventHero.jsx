@@ -61,7 +61,7 @@ export default function EventHero() {
 
         <div className="relative flex h-[500px] w-[544px] items-center justify-center max-[1200px]:w-full max-[900px]:mx-auto max-[900px]:max-w-[544px] max-[600px]:h-[400px] max-[400px]:h-[340px]">
           <img
-            src="/gallery/eventHero.png"
+            src="/gallery/eventHero.webp"
             alt="Mr. Andy Candy Wall"
             className="absolute left-[13px] top-[-15.2px] z-[1] block h-[531px] w-[531px] rounded-[30px] object-cover max-[1200px]:left-1/2 max-[1200px]:h-[min(100%,500px)] max-[1200px]:w-[min(100%,500px)] max-[1200px]:-translate-x-1/2 max-[600px]:top-0 max-[600px]:h-[min(100%,400px)] max-[600px]:w-[min(100%,400px)] max-[600px]:rounded-3xl max-[400px]:h-[340px] max-[400px]:w-[340px]"
           />
