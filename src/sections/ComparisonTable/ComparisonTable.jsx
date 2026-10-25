@@ -1,4 +1,5 @@
 import "./ComparisonTable.css";
+
 import {
   Check,
   BadgeCheck,
@@ -12,6 +13,10 @@ import {
   UserRound,
   Truck,
 } from "lucide-react";
+
+/* =========================================
+   COMPARISON FEATURES
+========================================= */
 
 const rows = [
   {
@@ -72,6 +77,10 @@ const rows = [
   },
 ];
 
+/* =========================================
+   PACKAGES
+========================================= */
+
 const packages = [
   {
     id: "sweet",
@@ -95,103 +104,143 @@ const packages = [
   },
 ];
 
+/* =========================================
+   FEATURE VALUE
+========================================= */
+
 function FeatureValue({ value }) {
   if (value === true) {
     return (
       <span className="comparison-included">
         <span className="comparison-check">
-          <Check size={17} strokeWidth={3} />
+          <Check size={16} strokeWidth={3} aria-hidden="true" />
         </span>
+
         <span>Included</span>
       </span>
     );
   }
 
+  if (value === "—") {
+    return <span className="comparison-unavailable">Not included</span>;
+  }
+
+  return <span>{value}</span>;
+}
+
+/* =========================================
+   PACKAGE HEADER
+========================================= */
+
+function PackageHeader({ item }) {
+  const Icon = item.icon;
+
   return (
-    <span className={value === "—" ? "comparison-unavailable" : ""}>
-      {value}
-    </span>
+    <th
+      scope="col"
+      className={
+        item.featured ? "package-heading highlight" : "package-heading"
+      }
+    >
+      {item.featured && <span className="popular-badge">{item.badge}</span>}
+
+      <div className="package-header-content">
+        <Icon
+          className="package-icon"
+          size={38}
+          strokeWidth={1.8}
+          aria-hidden="true"
+        />
+
+        <span className="package-title">{item.title}</span>
+
+        <span className="package-price">{item.price}</span>
+      </div>
+    </th>
   );
 }
 
+/* =========================================
+   FEATURE ROW
+========================================= */
+
+function FeatureRow({ row }) {
+  const Icon = row.icon;
+
+  return (
+    <tr>
+      <th scope="row" className="feature">
+        <span className="feature-content">
+          <Icon
+            className="feature-icon"
+            size={25}
+            strokeWidth={1.8}
+            aria-hidden="true"
+          />
+
+          <span className="feature-label">{row.feature}</span>
+        </span>
+      </th>
+
+      <td>
+        <FeatureValue value={row.sweet} />
+      </td>
+
+      <td className="highlight">
+        <FeatureValue value={row.signature} />
+      </td>
+
+      <td>
+        <FeatureValue value={row.grand} />
+      </td>
+    </tr>
+  );
+}
+
+/* =========================================
+   COMPARISON TABLE
+========================================= */
+
 export default function ComparisonTable() {
   return (
-    <section className="comparison-table">
+    <section className="comparison-table" aria-labelledby="comparison-title">
       <div className="comparison-container">
+        {/* Section heading */}
+
         <header className="comparison-heading">
-          <h2>What’s Included</h2>
+          <h2 id="comparison-title">What’s Included</h2>
+
           <p>
             Compare our packages to find the perfect candy experience for your
             celebration.
           </p>
         </header>
 
-        <div className="table-wrapper">
+        {/* Comparison table */}
+
+        <div
+          className="table-wrapper"
+          role="region"
+          aria-label="Candy wall package comparison"
+          tabIndex={0}
+        >
           <table>
             <thead>
               <tr>
-                <th className="feature-heading">FEATURE</th>
+                <th scope="col" className="feature-heading">
+                  FEATURE
+                </th>
 
-                {packages.map((item) => {
-                  const Icon = item.icon;
-
-                  return (
-                    <th
-                      key={item.id}
-                      className={
-                        item.featured
-                          ? "package-heading highlight"
-                          : "package-heading"
-                      }
-                    >
-                      {item.featured && (
-                        <span className="popular-badge">{item.badge}</span>
-                      )}
-
-                      <Icon
-                        className="package-icon"
-                        size={43}
-                        strokeWidth={1.8}
-                      />
-
-                      <span className="package-title">{item.title}</span>
-
-                      <span className="package-price">{item.price}</span>
-                    </th>
-                  );
-                })}
+                {packages.map((item) => (
+                  <PackageHeader key={item.id} item={item} />
+                ))}
               </tr>
             </thead>
 
             <tbody>
-              {rows.map((row) => {
-                const Icon = row.icon;
-
-                return (
-                  <tr key={row.feature}>
-                    <td className="feature">
-                      <Icon
-                        className="feature-icon"
-                        size={29}
-                        strokeWidth={1.9}
-                      />
-                      <span>{row.feature}</span>
-                    </td>
-
-                    <td>
-                      <FeatureValue value={row.sweet} />
-                    </td>
-
-                    <td className="highlight">
-                      <FeatureValue value={row.signature} />
-                    </td>
-
-                    <td>
-                      <FeatureValue value={row.grand} />
-                    </td>
-                  </tr>
-                );
-              })}
+              {rows.map((row) => (
+                <FeatureRow key={row.feature} row={row} />
+              ))}
             </tbody>
           </table>
         </div>
