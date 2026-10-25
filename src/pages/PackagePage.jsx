@@ -1,4 +1,3 @@
-import AddOns from "../sections/AddOns/AddOns";
 import PackageComparison from "../sections/Comparison/PackageComparison";
 import ComparisonTable from "../sections/ComparisonTable/ComparisonTable";
 import PackageCTA from "../sections/PackageCTA/PackageCTA";
