@@ -32,11 +32,12 @@ for (const route of ROUTES) {
       };
     });
 
-    await page.screenshot({
-      path: testInfo.outputPath(`${route.replace(/\W+/g, "_") || "home"}.png`),
-      fullPage: true,
-      animations: "disabled",
-    });
+    const shot = testInfo.outputPath(`${route.replace(/\W+/g, "_") || "home"}.png`);
+    try {
+      await page.screenshot({ path: shot, fullPage: true, animations: "disabled" });
+    } catch {
+      await page.screenshot({ path: shot, animations: "disabled" }); // tall-page fallback
+    }
 
     expect(pageErrors, "Uncaught JS errors").toEqual([]);
     expect(layout.overflow, "Horizontal overflow").toBe(false);
