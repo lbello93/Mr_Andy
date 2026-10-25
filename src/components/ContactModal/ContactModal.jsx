@@ -57,7 +57,7 @@ export default function ContactModal({ open, onClose }) {
           source: "contact-modal",
         }),
       });
-      e.currentTarget.reset();
+      form.reset();
       setStatus("success");
     } catch {
       setStatus("error");
