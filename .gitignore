@@ -30,3 +30,5 @@ baseline
 test-results
 playwright-report
 baseline
+.vercel
+.env*

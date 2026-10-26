@@ -36,7 +36,7 @@ export default function AboutHero() {
           </p>
 
           <div className="mt-[30px] flex w-full items-center gap-4 max-[768px]:mt-[26px] max-[768px]:flex-wrap max-[768px]:justify-center max-[480px]:mt-[25px] max-[480px]:flex-col max-[480px]:gap-3">
-            <Link to="/events" className={`${btn} ${primary}`}>
+            <Link to="/#gallery" className={`${btn} ${primary}`}>
               View Our Work
             </Link>
             <Link to="/packages" className={`${btn} ${secondary}`}>

@@ -317,7 +317,7 @@ export default function Gallery() {
   return (
     <section
       id="gallery"
-      className="flex w-full flex-col gap-14 overflow-hidden bg-[#f0eded] py-24 max-[1024px]:gap-11 max-[1024px]:py-[76px] max-[700px]:gap-8 max-[700px]:py-14 max-[520px]:py-12"
+      className="flex w-full scroll-mt-20 flex-col gap-14 overflow-hidden bg-[#f0eded] py-24 max-[1024px]:gap-11 max-[1024px]:py-[76px] max-[700px]:gap-8 max-[700px]:py-14 max-[520px]:py-12"
     >
       {/* Header */}
       <div className="mx-auto flex w-full max-w-[1280px] items-end justify-between gap-6 px-16 max-[1024px]:px-9 max-[700px]:items-start max-[700px]:px-5 max-[520px]:flex-col max-[520px]:gap-4">

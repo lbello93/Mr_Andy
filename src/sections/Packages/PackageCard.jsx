@@ -4,7 +4,6 @@ export default function PackageCard({
   title,
   description,
   icon,
-  to = "/packages",
   featured = false,
   badge,
 }) {
@@ -22,7 +21,6 @@ export default function PackageCard({
         </span>
       )}
 
-      {/* Icon sits in its own space, so it never overlaps the title */}
       <div className="mb-4 flex h-12 w-12 shrink-0 items-center justify-center">
         <img
           src={icon}
@@ -42,7 +40,8 @@ export default function PackageCard({
       </p>
 
       <Link
-        to={to}
+        to="/packages"
+        aria-label={`View ${title} package`}
         className={`mt-auto inline-flex w-full max-w-[200px] items-center justify-center rounded-full py-3 text-[12px] font-medium uppercase tracking-[0.14em] no-underline transition-all duration-200 ${
           featured
             ? "bg-gradient-to-b from-[#e0174f] to-brand text-white shadow-[0_10px_20px_-8px_rgba(185,2,53,0.6)] hover:brightness-110"

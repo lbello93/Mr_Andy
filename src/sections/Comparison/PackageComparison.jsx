@@ -1,15 +1,17 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Check } from "lucide-react";
 import { packages } from "./packageData";
 import PackageCard from "./PackageCard";
-import ContactModal from "../../components/ContactModal/ContactModal";
 
 // Height of your sticky navbar. Adjust if it's taller or shorter.
 const HEADER_HEIGHT = "72px";
 
+// Route of your booking page. Change this if yours is different (e.g. "/book").
+const BOOK_ROUTE = "/contact";
+
 export default function PackageComparison() {
-  const [open, setOpen] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState("");
+  const navigate = useNavigate();
 
   const common = useMemo(
     () =>
@@ -19,12 +21,12 @@ export default function PackageComparison() {
     [],
   );
 
-  const handleSelect = useCallback((title) => {
-    setSelectedPackage(title);
-    setOpen(true);
-  }, []);
-
-  const handleClose = useCallback(() => setOpen(false), []);
+  const handleSelect = useCallback(
+    (title) => {
+      navigate(`${BOOK_ROUTE}?package=${encodeURIComponent(title)}`);
+    },
+    [navigate],
+  );
 
   return (
     <section
@@ -70,12 +72,6 @@ export default function PackageComparison() {
         Need something different? Every package can be tailored to your event.
         Pick the closest one and tell us what you&apos;re imagining.
       </p>
-
-      <ContactModal
-        open={open}
-        onClose={handleClose}
-        selectedPackage={selectedPackage}
-      />
     </section>
   );
 }

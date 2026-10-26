@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import Button from "../../../components/Button/Button";
 import OptionCard from "../../../components/Option/OptionCard";
@@ -8,10 +8,22 @@ import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 import Step5 from "./steps/Step5";
+import StepPackage from "./steps/StepPackage";
 
 import { stepImages } from "./images";
 import { occasions } from "./data";
+import { packages } from "../../../data/packageData";
 import { submitInquiry } from "../../../lib/submitInquiry";
+import { startCheckout } from "../../../lib/startCheckout";
+import { NOT_SURE } from "./steps/StepPackage";
+
+const TOTAL_STEPS = 6;
+
+// Step order:
+// 1 Occasion · 2 Guests · 3 Date · 4 Vision · 5 Package · 6 Contact details (Submit)
+
+// Reuse existing illustrations for the shifted steps
+const IMAGE_STEP = { 5: 4, 6: 5 };
 
 const getTodayLocal = () => {
   const d = new Date();
@@ -22,37 +34,63 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function isStepValid(step, d) {
   switch (step) {
-    case 1: return Boolean(d.occasion);
-    case 2: return Boolean(d.guests);
-    case 3: return Boolean(d.date) && d.date >= getTodayLocal();
-    case 4: return Boolean(d.vision?.trim());
-    case 5: {
+    case 1:
+      return Boolean(d.occasion);
+    case 2:
+      return Boolean(d.guests);
+    case 3:
+      return Boolean(d.date) && d.date >= getTodayLocal();
+    case 4:
+      return Boolean(d.vision?.trim());
+    case 5:
+      return Boolean(d.package);
+    case 6: {
       if (!d.name?.trim() || !d.email?.trim() || !d.phone?.trim()) return false;
       if (!EMAIL_RE.test(d.email.trim())) return false;
       const digits = d.phone.replace(/\D/g, "");
       return digits.length >= 7 && digits.length <= 15;
     }
-    default: return false;
+    default:
+      return false;
   }
 }
 
 export default function ContactHero() {
+  const navigate = useNavigate();
+  const [params] = useSearchParams();
+
+  // Preselect a package when arriving from a "Book Now" button
+  const fromUrl = params.get("package") || "";
+  const initialPackage = packages.some((p) => p.title === fromUrl)
+    ? fromUrl
+    : "";
+
   const [step, setStep] = useState(1);
   const [status, setStatus] = useState("idle");
-  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    occasion: "", guests: "", date: "", vision: "", name: "", email: "", phone: "",
+    occasion: "",
+    guests: "",
+    date: "",
+    vision: "",
+    package: initialPackage,
+    name: "",
+    email: "",
+    phone: "",
   });
 
   const nextStep = async (overrides = {}) => {
     const data = { ...formData, ...overrides };
     if (!isStepValid(step, data)) return;
 
-    if (step === 5) {
+    if (step === TOTAL_STEPS) {
       setStatus("loading");
       try {
         await submitInquiry({ ...data, source: "booking-wizard" });
+        if (data.package && data.package !== NOT_SURE) {
+          await startCheckout(data);
+          return; // leaving for Stripe
+        }
         navigate("/contact/success");
       } catch {
         setStatus("error");
@@ -63,18 +101,21 @@ export default function ContactHero() {
     setStep((prev) => prev + 1);
   };
 
-  const prevStep = () => { if (step > 1) setStep((prev) => prev - 1); };
+  const prevStep = () => {
+    if (step > 1) setStep((prev) => prev - 1);
+  };
 
   const getCurrentImage = () => {
-    if (step === 1) return stepImages[1];
-    return stepImages[step]?.[formData.occasion] ?? stepImages[1];
+    const imgStep = IMAGE_STEP[step] ?? step;
+    if (imgStep === 1) return stepImages[1];
+    return stepImages[imgStep]?.[formData.occasion] ?? stepImages[1];
   };
 
   return (
     <section className="relative w-full min-h-[calc(100vh-96px)] min-h-[calc(100svh-96px)] overflow-hidden py-20 max-[768px]:py-[60px]">
       <div className="mx-auto grid w-[1280px] max-w-[calc(100%-128px)] grid-cols-[430px_1fr] items-center gap-20 max-[1200px]:max-w-[calc(100%-80px)] max-[1200px]:grid-cols-1 max-[1200px]:gap-[60px] max-[768px]:max-w-[calc(100%-40px)]">
         <div className="flex flex-col gap-10">
-          <ProgressBar step={step} totalSteps={5} />
+          <ProgressBar step={step} totalSteps={TOTAL_STEPS} />
 
           {step === 1 && (
             <>
@@ -82,7 +123,9 @@ export default function ContactHero() {
                 <h1 className="font-serif text-[32px] font-bold leading-[42px] text-ink">
                   What are you celebrating?
                 </h1>
-                <p className="mt-2 text-muted">Select the occasion that best describes your event.</p>
+                <p className="mt-2 text-muted">
+                  Select the occasion that best describes your event.
+                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4 max-[768px]:grid-cols-1">
@@ -93,7 +136,10 @@ export default function ContactHero() {
                     icon={item.icon}
                     active={formData.occasion === item.title}
                     onClick={() => {
-                      setFormData((prev) => ({ ...prev, occasion: item.title }));
+                      setFormData((prev) => ({
+                        ...prev,
+                        occasion: item.title,
+                      }));
                       nextStep({ occasion: item.title });
                     }}
                   />
@@ -102,10 +148,33 @@ export default function ContactHero() {
             </>
           )}
 
-          {step === 2 && <Step2 formData={formData} setFormData={setFormData} onSelect={nextStep} />}
-          {step === 3 && <Step3 formData={formData} setFormData={setFormData} onSelect={nextStep} />}
-          {step === 4 && <Step4 formData={formData} setFormData={setFormData} />}
-          {step === 5 && <Step5 formData={formData} setFormData={setFormData} />}
+          {step === 2 && (
+            <Step2
+              formData={formData}
+              setFormData={setFormData}
+              onSelect={nextStep}
+            />
+          )}
+          {step === 3 && (
+            <Step3
+              formData={formData}
+              setFormData={setFormData}
+              onSelect={nextStep}
+            />
+          )}
+          {step === 4 && (
+            <Step4 formData={formData} setFormData={setFormData} />
+          )}
+          {step === 5 && (
+            <StepPackage
+              formData={formData}
+              setFormData={setFormData}
+              onSelect={nextStep}
+            />
+          )}
+          {step === 6 && (
+            <Step5 formData={formData} setFormData={setFormData} />
+          )}
 
           <div className="mt-5 flex items-center gap-[18px] max-[768px]:flex-col">
             {step > 1 && (
@@ -120,11 +189,13 @@ export default function ContactHero() {
 
             <Button
               onClick={() => nextStep()}
-              disabled={
-                !isStepValid(step, formData) || status === "loading"
-              }
+              disabled={!isStepValid(step, formData) || status === "loading"}
             >
-              {status === "loading" ? "Submitting\u2026" : step === 5 ? "Submit" : "Next \u2192"}
+              {status === "loading"
+                ? "Submitting\u2026"
+                : step === TOTAL_STEPS
+                  ? (formData.package && formData.package !== NOT_SURE ? "Continue to Payment \u2192" : "Submit")
+                  : "Next \u2192"}
             </Button>
           </div>
 
@@ -138,7 +209,11 @@ export default function ContactHero() {
         <div className="flex items-center justify-center max-[1200px]:order-[-1]">
           <img
             src={getCurrentImage()}
-            alt={formData.occasion ? `${formData.occasion} illustration` : "Contact illustration"}
+            alt={
+              formData.occasion
+                ? `${formData.occasion} illustration`
+                : "Contact illustration"
+            }
             className="block w-full max-w-[760px] object-contain max-[1200px]:max-w-[520px]"
           />
         </div>
