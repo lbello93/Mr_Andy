@@ -22,6 +22,7 @@ const inputClass =
 export default function ContactModal({ open, onClose }) {
   const [status, setStatus] = useState("idle");
   const firstInputRef = useRef(null);
+  const formRef = useRef(null);
 
   useEffect(() => {
     if (!open) return;
@@ -42,12 +43,18 @@ export default function ContactModal({ open, onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget));
+
+    const form = formRef.current;
+    if (!form) return;
+
+    const data = Object.fromEntries(new FormData(form));
     setStatus("loading");
+
     try {
       await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
+        redirect: "follow",
         headers: { "Content-Type": "text/plain;charset=UTF-8" },
         body: JSON.stringify({
           name: data.name,
@@ -57,9 +64,11 @@ export default function ContactModal({ open, onClose }) {
           source: "contact-modal",
         }),
       });
+
       form.reset();
       setStatus("success");
-    } catch {
+    } catch (err) {
+      console.error("Modal form error:", err);
       setStatus("error");
     }
   };
@@ -73,7 +82,6 @@ export default function ContactModal({ open, onClose }) {
       aria-label="Contact us"
     >
       <div className="relative flex w-full max-w-[896px] flex-col items-start rounded-[32px] bg-white p-14 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25),0_0_0_3px_#D91B5C] max-[900px]:max-h-[90vh] max-[900px]:overflow-y-auto max-[900px]:p-8 max-[600px]:p-6">
-        {/* Close */}
         <button
           type="button"
           onClick={onClose}
@@ -84,7 +92,6 @@ export default function ContactModal({ open, onClose }) {
         </button>
 
         <div className="grid w-full grid-cols-[1fr_auto_1fr] gap-0 max-[768px]:grid-cols-1">
-          {/* Left: form */}
           <div className="flex flex-col gap-7 pr-4 max-[768px]:pr-0">
             <h2 className="font-serif text-[48px] font-bold leading-[48px] tracking-[-1.2px] text-[#171717] max-[600px]:text-[36px] max-[600px]:leading-[40px]">
               Drop us
@@ -92,7 +99,7 @@ export default function ContactModal({ open, onClose }) {
               <span className="text-[#CB0C4D]">a Message</span>
             </h2>
 
-            <form className="flex flex-col gap-3.5" onSubmit={handleSubmit}>
+            <form ref={formRef} className="flex flex-col gap-3.5" onSubmit={handleSubmit}>
               {FIELDS.map((f, i) => {
                 const Icon = f.icon;
                 return (
@@ -160,10 +167,8 @@ export default function ContactModal({ open, onClose }) {
             </form>
           </div>
 
-          {/* Divider */}
           <div className="mx-10 w-px self-stretch bg-[#F3F4F6] max-[768px]:mx-0 max-[768px]:my-8 max-[768px]:h-px max-[768px]:w-full max-[768px]:self-auto" />
 
-          {/* Right: contact info */}
           <div className="flex flex-col pl-0">
             <h2 className="mb-9 font-serif text-[48px] font-bold leading-[48px] tracking-[-1.2px] text-[#171717] max-[600px]:text-[36px] max-[600px]:leading-[40px]">
               Contact <span className="text-[#CB0C4D]">Us</span>
