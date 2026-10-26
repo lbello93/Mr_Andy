@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Container from "../Container";
@@ -10,6 +10,7 @@ import ContactModal from "../ContactModal/ContactModal";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const closeModal = useCallback(() => setModalOpen(false), []);
   const location = useLocation();
 
   useLockBodyScroll(isOpen);
@@ -145,7 +146,7 @@ const Navbar = () => {
         </div>
       </header>
 
-      <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <ContactModal open={modalOpen} onClose={closeModal} />
     </>
   );
 };

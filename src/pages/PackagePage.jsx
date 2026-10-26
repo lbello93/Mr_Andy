@@ -7,7 +7,9 @@ export default function PackagePage() {
   return (
     <>
       <PackagesHero />
+
       <PackageComparison />
+
       <ComparisonTable />
       <PackageCTA />
       {/* About Sections Here */}

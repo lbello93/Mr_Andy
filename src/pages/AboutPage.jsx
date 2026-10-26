@@ -10,8 +10,8 @@ export default function AboutPage() {
     <>
       <AboutHero />
       <OurStory />
-      <WhyWeExist />
-      <Standards />
+      {/* <WhyWeExist /> */}
+      {/* <Standards /> */}
       <OurPromise />
       <AboutCTA />
       {/* About Sections Here */}

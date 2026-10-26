@@ -1,93 +1,151 @@
-const chapters = [
-  {
-    title: "Every Sweet Dream Has a Beginning",
-    paragraphs: [
-      "Every great idea starts somewhere. For Andy, it began around middle school, about six years ago, with a passion for making chocolate.",
-      "What started as a hobby at home soon became something much more. Andy loved experimenting with new recipes, putting his own spin on familiar favorites, and discovering how a simple ingredient could become something special. Beyond making chocolate, he began imagining a future where he could turn his passion into a business of his own.",
-      "His dream was never limited to making sweets in his kitchen. Andy imagined building something bigger, a business inspired by his love of candy and his desire to create experiences that people could enjoy and remember.",
-      "That dream became the inspiration behind Mr. Andy\u2019s Candy Wall.",
-    ],
-  },
-  {
-    title: "A Gift That Brought a Dream to Life",
-    paragraphs: [
-      "A defining moment in Andy\u2019s journey came when Ms. Rita Graves, principal of Lamar High School, gifted him the candy wall as a graduation present.",
-      "Ms. Graves recognized Andy\u2019s passion, believed in his potential, and wanted to encourage his entrepreneurial ambitions. Her gift was more than a piece of equipment. It was a meaningful gesture of support for a young entrepreneur with a vision for his future.",
-      "For Andy, it represented an opportunity to take the next step toward turning his ideas into reality.",
-      "Rather than simply accepting the candy wall as it was, Andy designed it himself, bringing his creativity and vision together to create something distinctive. The result was the foundation of a business built around making celebrations sweeter and giving guests an experience they would remember.",
-    ],
-  },
-  {
-    title: "Designed with Passion, Created for Celebration",
-    paragraphs: [
-      "Today, Mr. Andy\u2019s Candy Wall transforms a love of candy into an interactive experience for birthdays, weddings, graduations, corporate events, and other special occasions.",
-      "With its colorful dispensers, carefully selected sweets, and customizable presentation, the candy wall adds something memorable to any celebration. From coordinating candy colors with an event\u2019s theme to incorporating personalized details, each setup is designed to complement the occasion.",
-      "But the experience is about more than candy. It is about the excitement of discovering a favorite treat, sharing a sweet moment with friends and family, and creating memories around something everyone can enjoy.",
-      "Every detail reflects the same spirit that started Andy\u2019s journey: creativity, curiosity, and a genuine love for making something special.",
-    ],
-  },
-  {
-    title: "The Beginning of Something Bigger",
-    paragraphs: [
-      "Mr. Andy\u2019s Candy Wall is the first step in a much larger entrepreneurial dream.",
-      "Andy hopes to grow the business throughout Texas, reaching more communities and bringing his candy experience to more celebrations. He also has ambitions beyond the candy wall, with bigger ideas that will take shape as the business grows.",
-      "For now, his focus is on building a strong foundation, creating memorable experiences for every customer, and turning the opportunity he was given into something meaningful.",
-      "Because every big dream starts with a first step, and sometimes, that first step is a little sweeter than expected.",
-    ],
-  },
-  {
-    title: "A Little Sweetness, A Lasting Memory",
-    paragraphs: [
-      "From making chocolate at home to designing his own candy wall, Andy\u2019s journey is a reminder of what can happen when passion meets opportunity and someone believes in your potential.",
-      "What began as a childhood interest is becoming a business built on creativity, ambition, and the joy of bringing people together.",
-      "At Mr. Andy\u2019s Candy Wall, every celebration has a story. We are proud to add a little sweetness to yours.",
-    ],
-  },
-];
+import { Quote, Heart } from "lucide-react";
+import { chapters } from "./ourStoryData";
+
+/* Turns **text** into bold pink text */
+function RichText({ text }) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={i} className="font-bold text-brand">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      part
+    ),
+  );
+}
+
+function PullQuote({ text }) {
+  return (
+    <blockquote className="relative m-0 rounded-2xl border-l-4 border-brand bg-[#FCE7EF] px-5 py-4 pl-11">
+      <Quote
+        size={18}
+        className="absolute left-4 top-4 text-brand"
+        aria-hidden="true"
+      />
+      <p className="font-serif text-[18px] font-medium italic leading-[1.5] text-brand">
+        {text}
+      </p>
+    </blockquote>
+  );
+}
+
+function Paragraph({ item }) {
+  if (typeof item === "object" && item.quote)
+    return <PullQuote text={item.quote} />;
+
+  return (
+    <p className="text-[16px] leading-[1.75] text-muted">
+      <RichText text={item} />
+    </p>
+  );
+}
+
+function Chapter({ chapter, index }) {
+  const number = String(index + 1).padStart(2, "0");
+  const isLeft = index % 2 === 0;
+
+  return (
+    <li className="relative grid grid-cols-[40px_1fr] items-start gap-4 pb-8 last:pb-0 min-[900px]:grid-cols-[1fr_80px_1fr] min-[900px]:gap-0 min-[900px]:pb-10">
+      {/* Number marker */}
+      <div className="relative z-[1] col-start-1 row-start-1 flex justify-center min-[900px]:col-start-2 min-[900px]:pt-6">
+        <span className="flex size-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#e0174f,#CB0C4D)] font-serif text-[14px] font-bold text-white shadow-[0_0_0_6px_#FCE7EF,0_10px_22px_-8px_rgba(203,12,77,0.6)] min-[900px]:size-12 min-[900px]:text-[16px]">
+          {number}
+        </span>
+      </div>
+
+      {/* Card */}
+      <article
+        className={`group relative col-start-2 row-start-1 rounded-3xl border-2 border-[#f6d3dd] bg-white p-7 shadow-[0_20px_45px_-30px_rgba(203,12,77,0.45)] transition-all duration-300 hover:-translate-y-1 hover:border-brand max-[768px]:rounded-2xl max-[768px]:p-5 ${
+          isLeft ? "min-[900px]:col-start-1" : "min-[900px]:col-start-3"
+        }`}
+      >
+        {/* Pointer towards the timeline (desktop) */}
+        <span
+          aria-hidden="true"
+          className={`absolute top-9 hidden size-4 rotate-45 border-[#f6d3dd] bg-white transition-colors group-hover:border-brand min-[900px]:block ${
+            isLeft
+              ? "-right-[10px] border-r-2 border-t-2"
+              : "-left-[10px] border-b-2 border-l-2"
+          }`}
+        />
+
+        <span className="mb-1.5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-brand">
+          <span className="h-[2px] w-5 rounded-full bg-brand" />
+          Chapter {number}
+        </span>
+
+        <h3 className="mb-4 font-serif text-[23px] font-bold leading-[1.25] text-ink max-[768px]:text-[20px]">
+          {chapter.title}
+        </h3>
+
+        <div className="flex flex-col gap-3">
+          {chapter.paragraphs.map((item, i) => (
+            <Paragraph key={i} item={item} />
+          ))}
+        </div>
+      </article>
+    </li>
+  );
+}
 
 export default function OurStory() {
   return (
     <section
       aria-labelledby="our-story-title"
-      className="bg-surface px-6 py-24 max-[768px]:py-[72px]"
+      className="bg-surface px-6 py-20 max-[768px]:px-4 max-[768px]:py-16"
     >
-      <div className="mx-auto max-w-[768px]">
-        <header className="mb-16 text-center max-[768px]:mb-12">
+      <div className="mx-auto max-w-[1100px]">
+        {/* Heading */}
+        <header className="mx-auto mb-12 max-w-[720px] text-center max-[768px]:mb-10">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#FCE7EF] px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-brand">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand" />
+            Our Story
+          </span>
           <h2
             id="our-story-title"
-            className="text-[48px] font-bold leading-[1.15] text-ink max-[768px]:text-[36px]"
+            className="font-serif text-[44px] font-bold leading-[1.15] text-ink max-[768px]:text-[32px]"
           >
-            The Story Behind Mr. Andy{"\u2019"}s Candy Wall
+            The Story Behind{" "}
+            <span className="text-brand">Mr. Andy’s Candy Wall</span>
           </h2>
           <div
             aria-hidden="true"
-            className="mx-auto mt-6 h-1 w-24 rounded-full bg-gold"
+            className="mx-auto mt-5 h-1 w-20 rounded-full bg-brand"
           />
         </header>
 
-        <div className="flex flex-col gap-14 max-[768px]:gap-10">
-          {chapters.map((chapter) => (
-            <article key={chapter.title}>
-              <h3 className="mb-5 text-[30px] font-bold leading-[1.25] text-brand max-[768px]:text-[24px]">
-                {chapter.title}
-              </h3>
-              <div className="flex flex-col gap-5">
-                {chapter.paragraphs.map((text) => (
-                  <p
-                    key={text}
-                    className="text-[18px] leading-[1.7] text-muted max-[768px]:text-[16px]"
-                  >
-                    {text}
-                  </p>
-                ))}
-              </div>
-            </article>
+        {/* Timeline */}
+        <ol className="relative m-0 list-none p-0">
+          <span
+            aria-hidden="true"
+            className="absolute bottom-6 left-[19px] top-6 w-[3px] rounded-full bg-gradient-to-b from-brand via-[#f39ab6] to-[#FCE7EF] min-[900px]:left-1/2 min-[900px]:-translate-x-1/2"
+          />
+          {chapters.map((chapter, i) => (
+            <Chapter key={chapter.title} chapter={chapter} index={i} />
           ))}
-        </div>
+        </ol>
 
-        <p className="mt-16 rounded-3xl border border-line bg-white px-8 py-10 text-center font-serif text-[26px] italic leading-[1.35] text-ink shadow-card max-[768px]:mt-12 max-[768px]:px-6 max-[768px]:py-8 max-[768px]:text-[21px]">
-          Mr. Andy{"\u2019"}s Candy Wall. A little sweetness, a lasting memory.
-        </p>
+        {/* Closing */}
+        <div className="mx-auto mt-12 max-w-[720px] rounded-3xl bg-[linear-gradient(135deg,#CB0C4D,#e0174f)] p-[2px] shadow-[0_24px_50px_-28px_rgba(203,12,77,0.6)]">
+          <div className="flex flex-col items-center gap-3 rounded-[22px] bg-white px-8 py-8 text-center max-[768px]:px-5">
+            <Heart
+              size={24}
+              className="fill-brand text-brand"
+              aria-hidden="true"
+            />
+            <p className="max-w-[520px] text-[16px] leading-[1.7] text-muted">
+              From making chocolate at home to designing his own candy wall,
+              Andy&apos;s journey shows what happens when{" "}
+              <strong className="font-bold text-brand">
+                passion meets opportunity
+              </strong>
+              .
+            </p>
+            <p className="font-serif text-[24px] font-semibold italic leading-[1.35] text-brand max-[768px]:text-[20px]">
+              A little sweetness, a lasting memory.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

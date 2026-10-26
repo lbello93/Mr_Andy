@@ -7,7 +7,7 @@ const eventCategories = [
     subtitle: "Professional. Interactive. Memorable.",
     description:
       "Elevate your corporate identity with a candy experience that leaves a lasting impression. From Employee Appreciation days to high-stakes Product Launches, we customize every detail to match your brand's palette and tone.",
-    points: ["Custom Branding", "Logo Integrated Displays", "Branded Candy Wrappers"],
+
     image: "/eventCard/cor.webp",
     reverse: false,
   },
@@ -32,8 +32,7 @@ const eventCategories = [
     subtitle: "A beautiful treat your guests will never forget.",
     description:
       "Luxury meets confectionery. Our wedding displays use premium glass, organic floral integrations, and sophisticated monochromatic palettes like blush and ivory to complement your decor perfectly.",
-    quote:
-      "The candy wall was the highlight of our reception and became the most photographed moment of the evening.",
+
     image: "/eventCard/wedd.webp",
     reverse: true,
   },
@@ -87,7 +86,10 @@ export default function EventCategories() {
                     key={point}
                     className="flex min-h-6 w-full items-center gap-3 text-[16px] leading-6 text-ink max-[600px]:text-[15px] max-[600px]:leading-[23px]"
                   >
-                    <span aria-hidden="true" className="block size-[11.67px] shrink-0 bg-brand" />
+                    <span
+                      aria-hidden="true"
+                      className="block size-[11.67px] shrink-0 bg-brand"
+                    />
                     <span>{point}</span>
                   </li>
                 ))}
