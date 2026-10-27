@@ -14,8 +14,6 @@ import { stepImages } from "./images";
 import { occasions } from "./data";
 import { packages } from "../../../data/packageData";
 import { submitInquiry } from "../../../lib/submitInquiry";
-import { startCheckout } from "../../../lib/startCheckout";
-import { NOT_SURE } from "./steps/StepPackage";
 
 const TOTAL_STEPS = 6;
 
@@ -87,10 +85,6 @@ export default function ContactHero() {
       setStatus("loading");
       try {
         await submitInquiry({ ...data, source: "booking-wizard" });
-        if (data.package && data.package !== NOT_SURE) {
-          await startCheckout(data);
-          return; // leaving for Stripe
-        }
         navigate("/contact/success");
       } catch {
         setStatus("error");
@@ -194,7 +188,7 @@ export default function ContactHero() {
               {status === "loading"
                 ? "Submitting\u2026"
                 : step === TOTAL_STEPS
-                  ? (formData.package && formData.package !== NOT_SURE ? "Continue to Payment \u2192" : "Submit")
+                  ? "Submit"
                   : "Next \u2192"}
             </Button>
           </div>
